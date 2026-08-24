@@ -1,12 +1,14 @@
 # 📖 AI Quran & Sunnah Companion (قرآن و سنت رہنمائی)
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com)
+[![Live Website](https://img.shields.io/badge/Live_Website-ai--quran--companion.vercel.app-black?style=for-the-badge&logo=vercel)](https://ai-quran-companion.vercel.app/)
 [![React 19](https://img.shields.io/badge/React-19-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=for-the-badge&logo=vite&logoColor=white)](https://vitejs.dev/)
 [![Tailwind CSS v4](https://img.shields.io/badge/Tailwind_CSS-v4-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)](https://tailwindcss.com/)
 [![Google Gemini AI](https://img.shields.io/badge/Google_Gemini-AI-4285F4?style=for-the-badge&logo=google&logoColor=white)](https://aistudio.google.com/)
 
 > A compassionate, authentic, and evidence-based Islamic AI companion that provides comforting spiritual guidance derived directly from the Holy Qur'an, authentic Hadith, and prophetic supplications.
+
+🌐 **Live Demo**: **[https://ai-quran-companion.vercel.app](https://ai-quran-companion.vercel.app/)**
 
 ---
 
@@ -93,6 +95,10 @@ The application will be available at **`http://localhost:5173`** (or `http://loc
 
 ## ☁️ Deployment on Vercel
 
+The live application is hosted on Vercel:
+👉 **[https://ai-quran-companion.vercel.app](https://ai-quran-companion.vercel.app/)**
+
+### Deploying Your Own Instance:
 1. Push your repository to GitHub.
 2. Import the project into **[Vercel](https://vercel.com/)**.
 3. Under **Environment Variables**, add:
