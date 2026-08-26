@@ -114,9 +114,9 @@ export const Route = createFileRoute("/api/chat")({
             }
 
             const candidateModels = [
-              "gemini-3-flash-preview",
-              "gemini-3.6-flash",
-              "gemini-3.5-flash",
+              "gemini-2.5-flash",
+              "gemini-2.0-flash",
+              "gemini-1.5-flash",
             ];
 
             let geminiRes: Response | null = null;
@@ -213,9 +213,9 @@ export const Route = createFileRoute("/api/chat")({
 
           // Fallback to OpenRouter if Gemini failed or is not available
           const openrouterModels = [
-            "google/gemma-4-31b-it:free",
-            "liquid/lfm-2.5-2.6b:free",
-            "openai/gpt-oss-20b:free",
+            "google/gemini-2.0-flash-001",
+            "meta-llama/llama-3.3-70b-instruct:free",
+            "mistralai/mistral-7b-instruct:free",
           ];
 
           const apiMessages: Array<{ role: string; content: string }> = [
