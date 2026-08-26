@@ -82,10 +82,62 @@ function parsePartialAyahData(raw: string): AyahData | null {
   };
 }
 
+function getIconForTitle(title: string): string {
+  const lower = title.toLowerCase();
+  if (lower.includes("help") || lower.includes("مدد")) return "heart";
+  if (lower.includes("reflect on") || lower.includes("سوال") || lower.includes("ponder") || lower.includes("غور فرمائیں")) return "question";
+  if (lower.includes("reflect") || lower.includes("فکر")) return "sparkle";
+  if (lower.includes("hadith") || lower.includes("حدیث")) return "book";
+  if (lower.includes("dua") || lower.includes("دعا") || lower.includes("supplication")) return "hands";
+  if (lower.includes("step") || lower.includes("اقدام") || lower.includes("action") || lower.includes("عمل")) return "check";
+  return "sparkle";
+}
+
+function parseSectionData(inner: string): { meta: SectionMeta; body: string } | null {
+  const nl = inner.indexOf("\n");
+  const head = (nl === -1 ? inner : inner.slice(0, nl)).trim();
+  const body = (nl === -1 ? "" : inner.slice(nl + 1)).trim();
+
+  // 1. Try standard JSON parse
+  const parsed = safeParse<SectionMeta>(head);
+  if (parsed?.title) {
+    return {
+      meta: {
+        title: parsed.title,
+        icon: parsed.icon || getIconForTitle(parsed.title),
+      },
+      body,
+    };
+  }
+
+  // 2. Try regex extraction of "title": "..."
+  const titleMatch = head.match(/"title"\s*:\s*"([^"]+)"/i) || inner.match(/"title"\s*:\s*"([^"]+)"/i);
+  const iconMatch = head.match(/"icon"\s*:\s*"([^"]+)"/i) || inner.match(/"icon"\s*:\s*"([^"]+)"/i);
+  if (titleMatch) {
+    const title = titleMatch[1];
+    const icon = iconMatch ? iconMatch[1] : getIconForTitle(title);
+    return { meta: { title, icon }, body };
+  }
+
+  // 3. Try plain text title on first line (e.g. "### Dua" or "Why this helps" or "Dua")
+  const cleanHead = head.replace(/^[#\s*_-]+/, "").replace(/[*_#:-]+$/, "").trim();
+  if (cleanHead.length > 0 && cleanHead.length < 50) {
+    return {
+      meta: {
+        title: cleanHead,
+        icon: getIconForTitle(cleanHead),
+      },
+      body,
+    };
+  }
+
+  return null;
+}
+
 function splitChunks(rawText: string): Chunk[] {
   const text = cleanMessageText(rawText);
   const chunks: Chunk[] = [];
-  const re = /```(ayah|section)\n([\s\S]*?)(?:```|$)/g;
+  const re = /```(ayah|section)[\s\r\n]([\s\S]*?)(?:```|$)/g;
   let lastIndex = 0;
   let sectionIdx = 0;
   let m: RegExpExecArray | null;
@@ -104,13 +156,11 @@ function splitChunks(rawText: string): Chunk[] {
         chunks.push({ kind: "ayah_loading" });
       }
     } else {
-      // section: first line is JSON meta, rest is markdown body
-      const nl = inner.indexOf("\n");
-      const head = nl === -1 ? inner : inner.slice(0, nl);
-      const body = nl === -1 ? "" : inner.slice(nl + 1).trim();
-      const meta = safeParse<SectionMeta>(head);
-      if (meta?.title) {
-        chunks.push({ kind: "section", meta, body, index: sectionIdx++ });
+      const sec = parseSectionData(inner);
+      if (sec) {
+        chunks.push({ kind: "section", meta: sec.meta, body: sec.body, index: sectionIdx++ });
+      } else {
+        chunks.push({ kind: "md", text: inner });
       }
     }
     lastIndex = re.lastIndex;

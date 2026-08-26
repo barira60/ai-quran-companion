@@ -136,6 +136,7 @@ export const Route = createFileRoute("/api/chat")({
                       contents: mergedContents,
                       generationConfig: {
                         temperature: 0.7,
+                        maxOutputTokens: 8192,
                       },
                     }),
                   },
