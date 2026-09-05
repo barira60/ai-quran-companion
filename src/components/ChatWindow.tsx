@@ -251,9 +251,9 @@ export function ChatWindow({
         <ConversationScrollButton />
       </Conversation>
 
-      <div className="border-t bg-card/80 backdrop-blur-md p-2.5 sm:p-3 md:p-4 pb-[calc(0.6rem+env(safe-area-inset-bottom,0px))]">
+      <div className="border-t bg-card/60 backdrop-blur-md px-3 py-2 sm:px-4 sm:py-3 pb-[calc(0.4rem+env(safe-area-inset-bottom,0px))]">
         <div className="mx-auto max-w-4xl">
-          <div className="flex items-end gap-2 rounded-2xl border bg-background p-2 sm:p-2.5 shadow-xs focus-within:ring-2 focus-within:ring-ring">
+          <div className="flex items-center gap-2 rounded-2xl sm:rounded-3xl border border-primary/20 bg-background/90 px-3 py-1 sm:py-1.5 shadow-2xs focus-within:ring-2 focus-within:ring-ring focus-within:border-primary">
             <Textarea
               ref={composerRef}
               value={input}
@@ -266,28 +266,28 @@ export function ChatWindow({
                   : "Tell me how you're feeling…"
               }
               rows={1}
-              className={`min-h-11 max-h-36 sm:max-h-44 flex-1 resize-none border-0 bg-transparent shadow-none focus-visible:ring-0 text-base ${
+              className={`min-h-[36px] max-h-32 sm:max-h-40 flex-1 resize-none border-0 bg-transparent p-1 shadow-none focus-visible:ring-0 text-sm sm:text-base leading-snug ${
                 appLang === "ur"
-                  ? "font-urdu text-[1.35rem] leading-[2.5] placeholder:font-urdu placeholder:text-[1.2rem] placeholder:leading-[2.5]"
-                  : "text-sm sm:text-base leading-relaxed"
+                  ? "font-urdu text-[1.25rem] leading-[2.3] placeholder:font-urdu placeholder:text-[1.15rem]"
+                  : "text-sm sm:text-base leading-snug"
               }`}
               disabled={isLoading}
             />
             <Button
               type="button"
               size="icon"
-              className="size-9 sm:size-10 shrink-0"
+              className="size-8 sm:size-9 shrink-0 rounded-xl bg-primary text-primary-foreground hover:bg-primary/90 disabled:opacity-40 transition-transform active:scale-95"
               onClick={() => void submit(input)}
               disabled={isLoading || !input.trim()}
-              aria-label="Send"
+              aria-label="Send message"
             >
-              <Send className="size-4" />
+              <Send className="size-3.5 sm:size-4" />
             </Button>
           </div>
-          <p className={`mt-1.5 sm:mt-2 text-center ${appLang === "ur" ? "font-urdu text-xs leading-loose text-muted-foreground" : "text-[11px] text-muted-foreground"}`}>
+          <p className={`mt-1 text-center truncate ${appLang === "ur" ? "font-urdu text-[10px] leading-loose text-muted-foreground" : "text-[10px] text-muted-foreground"}`}>
             {appLang === "ur"
-              ? "تعلیمی رہنمائی۔ یہ مستند علماء، معالجین یا ڈاکٹروں کا متبادل نہیں ہے۔"
-              : "Educational content. Not a substitute for qualified scholars, therapists, or doctors."}
+              ? "تعلیمی رہنمائی۔ مستند علماء یا ڈاکٹروں کا متبادل نہیں ہے۔"
+              : "Educational content. Not a substitute for qualified scholars or doctors."}
           </p>
         </div>
       </div>

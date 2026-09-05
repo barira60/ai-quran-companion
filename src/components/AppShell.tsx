@@ -225,21 +225,21 @@ export function AppShell({ children }: { children: ReactNode }) {
       {/* Main Content Area */}
       <div className="flex min-w-0 flex-1 flex-col h-full overflow-hidden">
         {/* Top Navigation Bar (Desktop & Mobile) */}
-        <header className="flex items-center justify-between border-b px-2.5 sm:px-4 py-1.5 sm:py-2 bg-card/40 backdrop-blur-sm z-10 pt-[calc(0.4rem+env(safe-area-inset-top,0px))]">
+        <header className="flex items-center justify-between border-b px-2.5 sm:px-4 py-1.5 sm:py-2 bg-card/60 backdrop-blur-md z-10 pt-[calc(0.4rem+env(safe-area-inset-top,0px))]">
           {/* Mobile hamburger & logo */}
-          <div className="flex items-center gap-1.5 sm:gap-2 md:hidden">
+          <div className="flex items-center gap-1.5 sm:gap-2 md:hidden shrink-0">
             <Button
               size="icon-sm"
               variant="ghost"
               aria-label="Open menu"
               onClick={() => setMobileOpen(true)}
-              className="size-8"
+              className="size-8 shrink-0"
             >
               <Menu className="size-4" />
             </Button>
 
-            <Link to="/chat">
-              <Logo withWordmark size={20} />
+            <Link to="/chat" className="shrink-0 flex items-center">
+              <Logo withWordmark compact size={22} />
             </Link>
           </div>
 
@@ -252,18 +252,18 @@ export function AppShell({ children }: { children: ReactNode }) {
           </div>
 
           {/* Action buttons (Language Switcher, New Chat, Theme) */}
-          <div className="flex items-center gap-1.5 sm:gap-2 ml-auto">
+          <div className="flex items-center gap-1 sm:gap-2 ml-auto shrink-0">
             <LanguageToggle />
             <Button
               size="sm"
               variant="outline"
               onClick={handleNewConversation}
-              className={`gap-1 h-7 sm:h-8 px-2 sm:px-2.5 text-xs text-primary border-primary/20 hover:bg-primary/10 ${
+              className={`gap-1 h-7 sm:h-8 px-2 sm:px-2.5 text-xs text-primary border-primary/25 hover:bg-primary/10 ${
                 isUrdu ? "font-urdu" : ""
               }`}
               title={isUrdu ? "نئی گفتگو" : "New Chat"}
             >
-              <Plus className="size-3.5" />
+              <Plus className="size-3.5 shrink-0" />
               <span className="hidden sm:inline">{isUrdu ? "نئی گفتگو" : "New Chat"}</span>
             </Button>
             <ThemeToggle />
