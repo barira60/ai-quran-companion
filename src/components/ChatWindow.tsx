@@ -198,7 +198,7 @@ export function ChatWindow({
                   <MessageContent
                     className={
                       isUserUrdu
-                        ? "font-urdu text-[14px] sm:text-[16px] leading-[2.0] sm:leading-[2.2] text-right"
+                        ? "font-urdu text-[1.32rem] sm:text-[1.45rem] leading-[2.35] sm:leading-[2.5] text-right"
                         : "text-sm sm:text-base leading-relaxed"
                     }
                     dir={isUserUrdu ? "rtl" : "ltr"}
@@ -220,7 +220,7 @@ export function ChatWindow({
           {status === "submitted" && (
             <Message from="assistant">
               <MessageContent>
-                <Shimmer className={appLang === "ur" ? "font-urdu text-xs sm:text-sm leading-normal" : ""}>
+                <Shimmer className={appLang === "ur" ? "font-urdu text-base sm:text-lg leading-normal" : ""}>
                   {appLang === "ur" ? "رہنمائی تلاش کی جا رہی ہے…" : "Reflecting on your words…"}
                 </Shimmer>
               </MessageContent>
@@ -268,7 +268,7 @@ export function ChatWindow({
               rows={1}
               className={`min-h-[36px] max-h-32 sm:max-h-40 flex-1 resize-none border-0 bg-transparent p-1 shadow-none focus-visible:ring-0 text-sm sm:text-base leading-snug ${
                 appLang === "ur"
-                  ? "font-urdu text-[1.25rem] leading-[2.3] placeholder:font-urdu placeholder:text-[1.15rem]"
+                  ? "font-urdu text-[1.28rem] sm:text-[1.38rem] leading-[2.2] placeholder:font-urdu placeholder:text-[1.22rem]"
                   : "text-sm sm:text-base leading-snug"
               }`}
               disabled={isLoading}
@@ -284,7 +284,7 @@ export function ChatWindow({
               <Send className="size-3.5 sm:size-4" />
             </Button>
           </div>
-          <p className={`mt-1 text-center truncate ${appLang === "ur" ? "font-urdu text-[10px] leading-loose text-muted-foreground" : "text-[10px] text-muted-foreground"}`}>
+          <p className={`mt-1 text-center truncate ${appLang === "ur" ? "font-urdu text-xs leading-loose text-muted-foreground" : "text-[10px] text-muted-foreground"}`}>
             {appLang === "ur"
               ? "تعلیمی رہنمائی۔ مستند علماء یا ڈاکٹروں کا متبادل نہیں ہے۔"
               : "Educational content. Not a substitute for qualified scholars or doctors."}

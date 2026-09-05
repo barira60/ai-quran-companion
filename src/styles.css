@@ -211,47 +211,47 @@
   }
   .urdu {
     font-family: var(--font-urdu);
-    font-size: 0.95rem;
-    line-height: 1.95;
+    font-size: 1.38rem;
+    line-height: 2.35;
     direction: rtl;
     text-align: right;
     word-break: normal;
     overflow-wrap: break-word;
   }
   @media (min-width: 640px) {
-    .urdu { font-size: 1.05rem; line-height: 2.1; }
+    .urdu { font-size: 1.52rem; line-height: 2.5; }
   }
   .urdu-heading {
     font-family: var(--font-urdu);
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-size: 1.45rem;
+    line-height: 2.1;
     font-weight: 700;
     color: var(--color-primary);
     direction: rtl;
     text-align: right;
   }
   @media (min-width: 640px) {
-    .urdu-heading { font-size: 1.25rem; line-height: 1.9; }
+    .urdu-heading { font-size: 1.68rem; line-height: 2.2; }
   }
   .urdu-title {
     font-family: var(--font-urdu);
-    font-size: 1.2rem;
-    line-height: 1.8;
+    font-size: 1.58rem;
+    line-height: 2.1;
     font-weight: 700;
     direction: rtl;
     text-align: right;
   }
   @media (min-width: 640px) {
-    .urdu-title { font-size: 1.35rem; line-height: 1.9; }
+    .urdu-title { font-size: 1.78rem; line-height: 2.2; }
   }
   .urdu-badge {
     font-family: var(--font-urdu);
-    font-size: 0.82rem;
-    line-height: 1.6;
+    font-size: 1.05rem;
+    line-height: 1.9;
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    padding: 0.15rem 0.6rem;
+    padding: 0.2rem 0.75rem;
     border-radius: 9999px;
     font-weight: 600;
     direction: rtl;

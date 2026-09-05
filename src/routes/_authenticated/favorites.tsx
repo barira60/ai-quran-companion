@@ -26,7 +26,7 @@ function FavoritesPage() {
           </h1>
         </div>
         {data.length === 0 && (
-          <p className={isUrdu ? "font-urdu text-xs sm:text-sm text-muted-foreground leading-relaxed" : "text-xs sm:text-sm text-muted-foreground"}>
+          <p className={isUrdu ? "font-urdu text-sm sm:text-base text-muted-foreground leading-relaxed" : "text-xs sm:text-sm text-muted-foreground"}>
             {isUrdu
               ? "آپ نے ابھی تک کوئی آیت محفوظ نہیں کی۔ چیٹ میں آیت کے بک مارک بٹن پر کلک کر کے اسے یہاں محفوظ کریں۔"
               : "You haven't saved any verses yet. Tap the bookmark on an ayah card in the chat to keep it here."}

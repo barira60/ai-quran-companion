@@ -41,7 +41,7 @@ function HealingPage() {
             {isUrdu ? "قرآنی شفا و ہیلنگ موڈ" : "Healing Quran Mode"}
           </h1>
         </div>
-        <p className={isUrdu ? "font-urdu text-xs sm:text-sm text-muted-foreground max-w-2xl leading-relaxed" : "text-xs sm:text-sm text-muted-foreground max-w-2xl"}>
+        <p className={isUrdu ? "font-urdu text-sm sm:text-base text-muted-foreground max-w-2xl leading-relaxed" : "text-xs sm:text-sm text-muted-foreground max-w-2xl"}>
           {isUrdu
             ? "اپنی موجودہ کیفیت یا جذبہ منتخب کریں۔ قرآن و سنت سے منتخب آیات، احادیث اور مسنون دعائیں آپ کی تسکین کے لیے پیش کی جائیں گی۔"
             : "Choose what you're feeling. I'll curate verses, hadith, duas, and reflections from the Qur'an and Sunnah to help you sit with this emotion."}
@@ -62,14 +62,14 @@ function HealingPage() {
               className="group cursor-pointer rounded-xl sm:rounded-2xl border bg-card p-3 sm:p-5 text-left shadow-2xs hover:border-primary/40 hover:shadow-sm transition"
             >
               <div className={`mb-2 sm:mb-3 h-10 sm:h-14 rounded-lg sm:rounded-xl bg-gradient-to-br ${m.color} dark:opacity-40`} />
-              <h3 className={isUrdu ? "font-urdu text-base sm:text-lg font-bold text-foreground text-right" : "font-serif text-sm sm:text-lg font-semibold text-foreground"}>
+              <h3 className={isUrdu ? "font-urdu text-base sm:text-xl font-bold text-foreground text-right" : "font-serif text-sm sm:text-lg font-semibold text-foreground"}>
                 {isUrdu ? m.urTitle : m.key}
               </h3>
-              <p className={isUrdu ? "font-urdu mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-muted-foreground text-right leading-normal line-clamp-2" : "mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-muted-foreground line-clamp-2"}>
+              <p className={isUrdu ? "font-urdu mt-0.5 sm:mt-1 text-xs sm:text-sm text-muted-foreground text-right leading-relaxed line-clamp-2" : "mt-0.5 sm:mt-1 text-[11px] sm:text-xs text-muted-foreground line-clamp-2"}>
                 {isUrdu ? m.urDesc : m.desc}
               </p>
               <div className={`mt-2 sm:mt-3 ${isUrdu ? "text-right" : ""}`}>
-                <span className={`inline-flex items-center text-xs sm:text-sm font-medium text-primary group-hover:underline ${isUrdu ? "font-urdu" : ""}`}>
+                <span className={`inline-flex items-center text-xs sm:text-sm font-medium text-primary group-hover:underline ${isUrdu ? "font-urdu text-sm" : ""}`}>
                   {isUrdu ? "← شروع کریں" : "Open →"}
                 </span>
               </div>
