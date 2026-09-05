@@ -225,45 +225,45 @@ export function AppShell({ children }: { children: ReactNode }) {
       {/* Main Content Area */}
       <div className="flex min-w-0 flex-1 flex-col h-full overflow-hidden">
         {/* Top Navigation Bar (Desktop & Mobile) */}
-        <header className="flex items-center justify-between border-b px-2.5 sm:px-4 py-1.5 sm:py-2 bg-card/60 backdrop-blur-md z-10 pt-[calc(0.4rem+env(safe-area-inset-top,0px))]">
+        <header className="flex items-center justify-between border-b px-3.5 sm:px-5 py-2.5 sm:py-3.5 bg-card/80 backdrop-blur-md z-10 pt-[calc(0.65rem+env(safe-area-inset-top,0px))] shadow-2xs min-h-[58px] sm:min-h-[64px]">
           {/* Mobile hamburger & logo */}
-          <div className="flex items-center gap-1.5 sm:gap-2 md:hidden shrink-0">
+          <div className="flex items-center gap-2 sm:gap-3 md:hidden shrink-0">
             <Button
-              size="icon-sm"
+              size="icon"
               variant="ghost"
               aria-label="Open menu"
               onClick={() => setMobileOpen(true)}
-              className="size-8 shrink-0"
+              className="size-9 shrink-0 rounded-xl hover:bg-primary/10 text-foreground"
             >
-              <Menu className="size-4" />
+              <Menu className="size-5" />
             </Button>
 
             <Link to="/chat" className="shrink-0 flex items-center">
-              <Logo withWordmark compact size={22} />
+              <Logo withWordmark compact size={28} />
             </Link>
           </div>
 
           {/* Desktop Brand / Breadcrumb */}
-          <div className="hidden md:flex items-center gap-2 text-xs text-muted-foreground">
-            <span className="inline-block size-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className={isUrdu ? "font-urdu text-sm text-foreground/80 font-medium" : "font-medium text-foreground/80"}>
+          <div className="hidden md:flex items-center gap-2.5 text-xs text-muted-foreground">
+            <span className="inline-block size-2.5 rounded-full bg-emerald-500 animate-pulse shadow-xs" />
+            <span className={isUrdu ? "font-urdu text-base text-foreground/90 font-bold" : "font-semibold text-foreground/90 text-sm"}>
               {isUrdu ? "قرآن و سنت رہنمائی" : "Quran & Sunnah Guidance"}
             </span>
           </div>
 
           {/* Action buttons (Language Switcher, New Chat, Theme) */}
-          <div className="flex items-center gap-1 sm:gap-2 ml-auto shrink-0">
+          <div className="flex items-center gap-1.5 sm:gap-2 ml-auto shrink-0">
             <LanguageToggle />
             <Button
               size="sm"
               variant="outline"
               onClick={handleNewConversation}
-              className={`gap-1 h-7 sm:h-8 px-2 sm:px-2.5 text-xs text-primary border-primary/25 hover:bg-primary/10 ${
-                isUrdu ? "font-urdu" : ""
+              className={`gap-1.5 h-8 sm:h-9 px-2.5 sm:px-3 text-xs sm:text-sm font-medium text-primary border-primary/25 hover:bg-primary/10 rounded-xl shadow-2xs ${
+                isUrdu ? "font-urdu text-sm" : ""
               }`}
               title={isUrdu ? "نئی گفتگو" : "New Chat"}
             >
-              <Plus className="size-3.5 shrink-0" />
+              <Plus className="size-4 shrink-0" />
               <span className="hidden sm:inline">{isUrdu ? "نئی گفتگو" : "New Chat"}</span>
             </Button>
             <ThemeToggle />
@@ -282,18 +282,19 @@ export function AppShell({ children }: { children: ReactNode }) {
             {/* Panel */}
             <div className="relative flex flex-col h-full w-80 max-w-[85vw] bg-sidebar text-sidebar-foreground border-r border-sidebar-border shadow-2xl z-10">
               <div className="flex items-center justify-between p-4 border-b border-sidebar-border">
-                <Logo withWordmark />
+                <Logo withWordmark size={30} />
                 <Button
-                  size="icon-sm"
+                  size="icon"
                   variant="ghost"
                   onClick={() => setMobileOpen(false)}
                   aria-label="Close menu"
+                  className="size-9 rounded-xl"
                 >
                   <X className="size-5" />
                 </Button>
               </div>
 
-              <nav className="space-y-1 p-3">
+              <nav className="space-y-1.5 p-3.5">
                 {navItems.map((item) => {
                   const Icon = item.icon;
                   const active = pathname === item.to || (item.to === "/chat" && pathname.startsWith("/chat"));
@@ -302,21 +303,21 @@ export function AppShell({ children }: { children: ReactNode }) {
                       key={item.to}
                       to={item.to}
                       onClick={() => setMobileOpen(false)}
-                      className={`flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors ${
+                      className={`flex items-center gap-3 rounded-xl px-3.5 py-2.5 text-sm font-medium transition-colors ${
                         active
-                          ? "bg-primary text-primary-foreground"
+                          ? "bg-primary text-primary-foreground shadow-xs"
                           : "text-sidebar-foreground hover:bg-sidebar-accent"
                       }`}
                     >
-                      <Icon className="size-4" />
-                      <span className={isUrdu ? "font-urdu text-[15px]" : ""}>{item.label}</span>
+                      <Icon className="size-5" />
+                      <span className={isUrdu ? "font-urdu text-[1.15rem]" : "text-sm"}>{item.label}</span>
                     </Link>
                   );
                 })}
               </nav>
 
               <div className="flex flex-1 min-h-0 flex-col border-t border-sidebar-border mt-2">
-                <div className="flex items-center justify-between px-3 pt-3 pb-2">
+                <div className="flex items-center justify-between px-3.5 pt-3 pb-2">
                   <span className={`text-[11px] font-semibold uppercase tracking-wider text-muted-foreground ${isUrdu ? "font-urdu text-xs" : ""}`}>
                     {isUrdu ? "گفتگو کی تاریخ" : "Conversations"}
                   </span>
@@ -331,9 +332,9 @@ export function AppShell({ children }: { children: ReactNode }) {
                   </Button>
                 </div>
 
-                <div className="flex-1 overflow-y-auto px-2 pb-3 space-y-1">
+                <div className="flex-1 overflow-y-auto px-2.5 pb-3 space-y-1">
                   {threads.length === 0 && (
-                    <p className={`px-3 py-4 text-xs text-muted-foreground text-center ${isUrdu ? "font-urdu" : ""}`}>
+                    <p className={`px-3 py-4 text-xs text-muted-foreground text-center ${isUrdu ? "font-urdu text-sm" : ""}`}>
                       {isUrdu ? "ابھی تک کوئی گفتگو محفوظ نہیں ہوئی۔" : "No saved conversations yet."}
                     </p>
                   )}
@@ -342,7 +343,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                     return (
                       <div
                         key={t.id}
-                        className={`group flex items-center justify-between rounded-lg pr-1 text-sm ${
+                        className={`group flex items-center justify-between rounded-xl pr-1 text-sm ${
                           active
                             ? "bg-sidebar-accent font-medium text-foreground"
                             : "text-sidebar-foreground hover:bg-sidebar-accent/60"
@@ -352,7 +353,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                           to="/chat/$threadId"
                           params={{ threadId: t.id }}
                           onClick={() => setMobileOpen(false)}
-                          className="flex-1 min-w-0 px-3 py-2 truncate"
+                          className="flex-1 min-w-0 px-3 py-2.5 truncate"
                         >
                           <span>{t.title}</span>
                           {t.mood && (
@@ -364,7 +365,7 @@ export function AppShell({ children }: { children: ReactNode }) {
                         <button
                           aria-label="Delete conversation"
                           onClick={(e) => handleRemoveThread(t.id, e)}
-                          className="p-1.5 rounded hover:bg-destructive/10 text-muted-foreground hover:text-destructive"
+                          className="p-1.5 rounded-lg hover:bg-destructive/10 text-muted-foreground hover:text-destructive transition-colors"
                         >
                           <Trash2 className="size-3.5" />
                         </button>
@@ -374,33 +375,13 @@ export function AppShell({ children }: { children: ReactNode }) {
                 </div>
               </div>
 
-              <div className="p-3 border-t border-sidebar-border flex items-center justify-between">
-                <span className="text-xs text-muted-foreground">Quran Companion AI</span>
+              <div className="p-3.5 border-t border-sidebar-border flex items-center justify-between">
+                <span className="text-xs text-muted-foreground font-medium">Quran Companion AI</span>
                 <ThemeToggle />
               </div>
             </div>
           </div>
         )}
-
-        {/* Mobile Bottom Navigation Bar */}
-        <nav className="flex border-b md:hidden bg-card/40 backdrop-blur-sm shrink-0">
-          {navItems.map((item) => {
-            const Icon = item.icon;
-            const active = pathname === item.to || (item.to === "/chat" && pathname.startsWith("/chat"));
-            return (
-              <Link
-                key={item.to}
-                to={item.to}
-                className={`flex flex-1 flex-col items-center gap-1 py-2 text-xs transition-colors ${
-                  active ? "text-primary font-medium" : "text-muted-foreground hover:text-foreground"
-                }`}
-              >
-                <Icon className="size-4" />
-                <span className={isUrdu ? "font-urdu text-xs" : ""}>{item.label}</span>
-              </Link>
-            );
-          })}
-        </nav>
 
         {/* Main View Container */}
         <main className="flex-1 min-h-0 h-full overflow-hidden">{children}</main>
