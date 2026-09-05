@@ -177,8 +177,9 @@
   .font-urdu { font-family: var(--font-urdu); }
   .arabic {
     font-family: var(--font-arabic);
-    font-size: 1.45rem;
-    line-height: 2.5;
+    font-size: 1.68rem;
+    line-height: 2.65;
+    font-weight: 600;
     direction: rtl;
     unicode-bidi: isolate;
     text-align: right;
@@ -190,12 +191,13 @@
     -moz-osx-font-smoothing: grayscale;
   }
   @media (min-width: 640px) {
-    .arabic { font-size: 1.95rem; line-height: 3; }
+    .arabic { font-size: 2.15rem; line-height: 3.1; font-weight: 600; }
   }
   .dua-arabic {
     font-family: var(--font-arabic);
-    font-size: 1.35rem;
-    line-height: 2.4;
+    font-size: 1.5rem;
+    line-height: 2.55;
+    font-weight: 600;
     direction: rtl;
     unicode-bidi: isolate;
     text-align: right;
@@ -207,7 +209,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
   @media (min-width: 640px) {
-    .dua-arabic { font-size: 1.65rem; line-height: 2.8; }
+    .dua-arabic { font-size: 1.85rem; line-height: 2.9; }
   }
   .urdu {
     font-family: var(--font-urdu);
