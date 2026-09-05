@@ -152,14 +152,33 @@
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html, body { background-color: var(--color-background); color: var(--color-foreground); font-family: var(--font-sans); }
+  * { 
+    border-color: var(--color-border);
+    -webkit-tap-highlight-color: transparent;
+  }
+  html, body { 
+    background-color: var(--color-background); 
+    color: var(--color-foreground); 
+    font-family: var(--font-sans);
+    height: 100%;
+    height: 100dvh;
+    overscroll-behavior-y: none;
+  }
+  
+  /* Mobile safe areas */
+  :root {
+    --sat: env(safe-area-inset-top, 0px);
+    --sab: env(safe-area-inset-bottom, 0px);
+    --sal: env(safe-area-inset-left, 0px);
+    --sar: env(safe-area-inset-right, 0px);
+  }
+
   .font-arabic { font-family: var(--font-arabic); }
   .font-urdu { font-family: var(--font-urdu); }
   .arabic {
     font-family: var(--font-arabic);
-    font-size: 1.65rem;
-    line-height: 2.8;
+    font-size: 1.45rem;
+    line-height: 2.5;
     direction: rtl;
     unicode-bidi: isolate;
     text-align: right;
@@ -175,8 +194,8 @@
   }
   .dua-arabic {
     font-family: var(--font-arabic);
-    font-size: 1.45rem;
-    line-height: 2.6;
+    font-size: 1.35rem;
+    line-height: 2.4;
     direction: rtl;
     unicode-bidi: isolate;
     text-align: right;
@@ -192,38 +211,47 @@
   }
   .urdu {
     font-family: var(--font-urdu);
-    font-size: 1.38rem;
-    line-height: 2.6;
+    font-size: 1.25rem;
+    line-height: 2.4;
     direction: rtl;
     text-align: right;
     word-break: normal;
     overflow-wrap: break-word;
   }
+  @media (min-width: 640px) {
+    .urdu { font-size: 1.38rem; line-height: 2.6; }
+  }
   .urdu-heading {
     font-family: var(--font-urdu);
-    font-size: 1.65rem;
-    line-height: 2.3;
+    font-size: 1.45rem;
+    line-height: 2.1;
     font-weight: 700;
     color: var(--color-primary);
     direction: rtl;
     text-align: right;
   }
+  @media (min-width: 640px) {
+    .urdu-heading { font-size: 1.65rem; line-height: 2.3; }
+  }
   .urdu-title {
     font-family: var(--font-urdu);
-    font-size: 1.85rem;
-    line-height: 2.2;
+    font-size: 1.55rem;
+    line-height: 2.1;
     font-weight: 700;
     direction: rtl;
     text-align: right;
   }
+  @media (min-width: 640px) {
+    .urdu-title { font-size: 1.85rem; line-height: 2.2; }
+  }
   .urdu-badge {
     font-family: var(--font-urdu);
-    font-size: 1.05rem;
-    line-height: 2.0;
+    font-size: 0.95rem;
+    line-height: 1.8;
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;
-    padding: 0.2rem 0.75rem;
+    padding: 0.15rem 0.6rem;
     border-radius: 9999px;
     font-weight: 600;
     direction: rtl;

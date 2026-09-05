@@ -248,9 +248,9 @@ export function ChatWindow({
         <ConversationScrollButton />
       </Conversation>
 
-      <div className="border-t bg-card/50 p-3 md:p-4">
+      <div className="border-t bg-card/80 backdrop-blur-md p-2.5 sm:p-3 md:p-4 pb-[calc(0.6rem+env(safe-area-inset-bottom,0px))]">
         <div className="mx-auto max-w-4xl">
-          <div className="flex items-end gap-2 rounded-2xl border bg-background p-2.5 shadow-sm focus-within:ring-2 focus-within:ring-ring">
+          <div className="flex items-end gap-2 rounded-2xl border bg-background p-2 sm:p-2.5 shadow-xs focus-within:ring-2 focus-within:ring-ring">
             <Textarea
               ref={composerRef}
               value={input}
@@ -263,17 +263,17 @@ export function ChatWindow({
                   : "Tell me how you're feeling…"
               }
               rows={1}
-              className={`min-h-12 max-h-44 flex-1 resize-none border-0 bg-transparent shadow-none focus-visible:ring-0 ${
+              className={`min-h-11 max-h-36 sm:max-h-44 flex-1 resize-none border-0 bg-transparent shadow-none focus-visible:ring-0 text-base ${
                 appLang === "ur"
-                  ? "font-urdu text-[1.4rem] leading-[2.6] placeholder:font-urdu placeholder:text-[1.3rem] placeholder:leading-[2.6]"
-                  : "text-base leading-relaxed"
+                  ? "font-urdu text-[1.35rem] leading-[2.5] placeholder:font-urdu placeholder:text-[1.2rem] placeholder:leading-[2.5]"
+                  : "text-sm sm:text-base leading-relaxed"
               }`}
               disabled={isLoading}
             />
             <Button
               type="button"
               size="icon"
-              className="size-10 shrink-0"
+              className="size-9 sm:size-10 shrink-0"
               onClick={() => void submit(input)}
               disabled={isLoading || !input.trim()}
               aria-label="Send"
@@ -281,7 +281,7 @@ export function ChatWindow({
               <Send className="size-4" />
             </Button>
           </div>
-          <p className={`mt-2 text-center ${appLang === "ur" ? "font-urdu text-xs leading-loose text-muted-foreground" : "text-[11px] text-muted-foreground"}`}>
+          <p className={`mt-1.5 sm:mt-2 text-center ${appLang === "ur" ? "font-urdu text-xs leading-loose text-muted-foreground" : "text-[11px] text-muted-foreground"}`}>
             {appLang === "ur"
               ? "تعلیمی رہنمائی۔ یہ مستند علماء، معالجین یا ڈاکٹروں کا متبادل نہیں ہے۔"
               : "Educational content. Not a substitute for qualified scholars, therapists, or doctors."}

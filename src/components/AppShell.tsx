@@ -87,7 +87,7 @@ export function AppShell({ children }: { children: ReactNode }) {
   };
 
   return (
-    <div className="flex h-screen w-full overflow-hidden bg-background">
+    <div className="flex h-[100dvh] w-full overflow-hidden bg-background">
       {/* Desktop Unified Sidebar */}
       <aside
         className={`hidden md:flex ${
@@ -225,9 +225,9 @@ export function AppShell({ children }: { children: ReactNode }) {
       {/* Main Content Area */}
       <div className="flex min-w-0 flex-1 flex-col h-full overflow-hidden">
         {/* Top Navigation Bar (Desktop & Mobile) */}
-        <header className="flex items-center justify-between border-b px-4 py-2 bg-card/40 backdrop-blur-sm z-10">
+        <header className="flex items-center justify-between border-b px-3 sm:px-4 py-2.5 bg-card/40 backdrop-blur-sm z-10 pt-[calc(0.6rem+env(safe-area-inset-top,0px))]">
           {/* Mobile hamburger & logo */}
-          <div className="flex items-center gap-2 md:hidden">
+          <div className="flex items-center gap-1.5 sm:gap-2 md:hidden">
             <Button
               size="icon-sm"
               variant="ghost"
@@ -238,7 +238,7 @@ export function AppShell({ children }: { children: ReactNode }) {
             </Button>
 
             <Link to="/chat">
-              <Logo withWordmark size={24} />
+              <Logo withWordmark size={22} />
             </Link>
           </div>
 
