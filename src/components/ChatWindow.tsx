@@ -138,10 +138,10 @@ export function ChatWindow({
   return (
     <div className="flex h-full w-full flex-1 min-w-0 flex-col">
       <Conversation className="w-full flex-1 min-h-0">
-        <ConversationContent className="max-w-4xl mx-auto w-full px-4 sm:px-6">
+        <ConversationContent className="max-w-4xl mx-auto w-full px-3 sm:px-6 py-2 sm:py-4">
           {messages.length === 0 && (
             <ConversationEmptyState
-              icon={<Sparkle className="size-10 text-gold" />}
+              icon={<Sparkle className="size-6 text-gold" />}
               title={
                 appLang === "ur"
                   ? mood ? `ہیلنگ موڈ · ${mood}` : "اپنے دل کی بات بتائیں"
@@ -152,30 +152,33 @@ export function ChatWindow({
                   ? "اپنی کیفیت، پریشانی یا سوال بیان کریں۔ قرآن اور سنت سے رہنمائی حاصل کریں۔"
                   : "Describe how you feel or what you're struggling with. I'll share guidance from the Qur'an and Sunnah."
               }
+              className="py-4 sm:py-8 px-2 sm:px-4"
             >
-              <div className="flex flex-col items-center gap-4">
-                <div className="rounded-full bg-gold/15 p-3 text-gold">
-                  <BookHeart className="size-8" />
+              <div className="flex flex-col items-center gap-2.5 sm:gap-4 max-w-lg mx-auto">
+                <div className="rounded-full bg-gold/15 p-2 sm:p-2.5 text-gold">
+                  <BookHeart className="size-6 sm:size-7" />
                 </div>
-                <h3 className={appLang === "ur" ? "font-urdu text-2xl font-bold text-foreground" : "font-serif text-lg font-semibold"}>
+                <h3 className={appLang === "ur" ? "font-urdu text-lg sm:text-xl font-bold text-foreground" : "font-serif text-base sm:text-lg font-semibold"}>
                   {appLang === "ur"
                     ? mood ? `ہیلنگ موڈ · ${mood}` : "اپنے دل کا حال بیان کریں"
                     : mood ? `Healing Mode · ${mood}` : "Share what's on your heart"}
                 </h3>
-                <p className={appLang === "ur" ? "font-urdu text-[1.25rem] text-muted-foreground max-w-md text-center leading-[2.4]" : "text-sm text-muted-foreground max-w-md text-center"}>
+                <p className={appLang === "ur" ? "font-urdu text-xs sm:text-sm text-muted-foreground max-w-sm text-center leading-relaxed" : "text-xs sm:text-sm text-muted-foreground max-w-sm text-center leading-relaxed"}>
                   {appLang === "ur"
-                    ? "آپ جو بھی محسوس کر رہے ہیں، بے جھجھک لکھیں۔ قرآن، حدیث، دعا اور آسان رہنمائی پیش کی جائے گی۔"
+                    ? "آپ جو بھی محسوس کر رہے ہیں، بے جھجھک لکھیں۔ قرآن، حدیث اور دعا سے رہنمائی ملے گی۔"
                     : mood
                       ? `You chose ${mood}. Share a little more, or pick a prompt to begin.`
-                      : "Describe how you feel or what you're struggling with. I'll share verses, hadith, duas, and practical steps from the Qur'an and Sunnah."}
+                      : "Describe how you feel or what you're struggling with. I'll share verses, hadith, duas, and practical steps."}
                 </p>
-                <div className="flex flex-wrap justify-center gap-2.5 pt-2" dir={appLang === "ur" ? "rtl" : "ltr"}>
+                <div className="flex flex-wrap justify-center gap-1.5 sm:gap-2 pt-1 sm:pt-2" dir={appLang === "ur" ? "rtl" : "ltr"}>
                   {quickPrompts.map((p) => (
                     <button
                       key={p}
                       onClick={() => void submit(p)}
-                      className={`rounded-full border bg-card px-4 py-2 hover:bg-accent transition-colors shadow-2xs ${
-                        appLang === "ur" ? "font-urdu text-[1.25rem] leading-[2.3]" : "text-xs px-3.5 py-1.5"
+                      className={`rounded-full border bg-card hover:bg-accent transition-colors shadow-2xs ${
+                        appLang === "ur" 
+                          ? "font-urdu text-xs sm:text-sm px-2.5 py-1 leading-normal" 
+                          : "text-[11px] sm:text-xs px-2.5 sm:px-3.5 py-1 sm:py-1.5"
                       }`}
                     >
                       {p}
