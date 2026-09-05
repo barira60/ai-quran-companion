@@ -67,11 +67,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+import { InstallPwaPrompt } from "@/components/InstallPwaPrompt";
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
       { charSet: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
+      { name: "viewport", content: "width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" },
       { title: "Quran Companion AI — Guidance from the Qur'an for your daily struggles" },
       {
         name: "description",
@@ -79,6 +81,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Quran Companion AI listens to how you feel and shares relevant verses, hadith, duas, and practical steps from the Qur'an and Sunnah.",
       },
       { name: "author", content: "Quran Companion AI" },
+      { name: "theme-color", content: "#10b981" },
+      { name: "apple-mobile-web-app-capable", content: "yes" },
+      { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
+      { name: "apple-mobile-web-app-title", content: "Quran AI" },
       { property: "og:title", content: "Quran Companion AI" },
       {
         property: "og:description",
@@ -89,6 +95,9 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "manifest", href: "/manifest.json" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "icon", type: "image/png", href: "/pwa-192x192.png" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
@@ -130,12 +139,22 @@ function RootComponent() {
       const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches;
       const dark = stored ? stored === "dark" : prefers;
       document.documentElement.classList.toggle("dark", dark);
+
+      // Register PWA Service Worker
+      if ("serviceWorker" in navigator && process.env.NODE_ENV === "production") {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("/sw.js").catch((err) => {
+            console.warn("PWA ServiceWorker registration failed: ", err);
+          });
+        });
+      }
     }
   }, []);
 
   return (
     <QueryClientProvider client={queryClient}>
       <Outlet />
+      <InstallPwaPrompt />
       <Toaster richColors position="top-center" />
     </QueryClientProvider>
   );
