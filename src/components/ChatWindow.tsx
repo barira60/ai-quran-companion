@@ -198,7 +198,7 @@ export function ChatWindow({
                   <MessageContent
                     className={
                       isUserUrdu
-                        ? "font-urdu text-[1.42rem] leading-[2.7] text-right"
+                        ? "font-urdu text-[14px] sm:text-[16px] leading-[2.0] sm:leading-[2.2] text-right"
                         : "text-sm sm:text-base leading-relaxed"
                     }
                     dir={isUserUrdu ? "rtl" : "ltr"}
@@ -220,7 +220,7 @@ export function ChatWindow({
           {status === "submitted" && (
             <Message from="assistant">
               <MessageContent>
-                <Shimmer className={appLang === "ur" ? "font-urdu text-[1.25rem] leading-loose" : ""}>
+                <Shimmer className={appLang === "ur" ? "font-urdu text-xs sm:text-sm leading-normal" : ""}>
                   {appLang === "ur" ? "رہنمائی تلاش کی جا رہی ہے…" : "Reflecting on your words…"}
                 </Shimmer>
               </MessageContent>

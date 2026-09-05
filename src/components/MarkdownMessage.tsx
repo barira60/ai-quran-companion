@@ -352,7 +352,7 @@ function HadithBlock({ text }: { text: string }) {
       <div
         dir={isRawUrdu ? "rtl" : "ltr"}
         className={`prose prose-sm max-w-none dark:prose-invert ${
-          isRawUrdu ? "font-urdu text-[1.35rem] leading-[2.6] text-right" : "text-left font-sans"
+          isRawUrdu ? "font-urdu text-[14px] sm:text-[16px] leading-[2.0] sm:leading-[2.2] text-right" : "text-left font-sans"
         }`}
       >
         <ReactMarkdown>{text}</ReactMarkdown>
@@ -374,7 +374,7 @@ function HadithBlock({ text }: { text: string }) {
           <p
             className={
               isTranslationUrdu
-                ? "urdu text-foreground font-urdu text-[1.42rem] leading-[2.7] whitespace-pre-line"
+                ? "urdu text-foreground font-urdu text-[14px] sm:text-[16px] leading-[2.0] sm:leading-[2.2] whitespace-pre-line"
                 : "text-sm sm:text-base leading-relaxed text-foreground whitespace-pre-line italic font-sans"
             }
           >
@@ -388,20 +388,20 @@ function HadithBlock({ text }: { text: string }) {
       >
         {narrator && (
           <div className="inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-primary border border-primary/20">
-            <span className={isUrduUI ? "font-urdu font-bold text-sm" : "font-bold"}>
+            <span className={isUrduUI ? "font-urdu font-bold text-xs" : "font-bold"}>
               {isUrduUI ? "راوی:" : "Narrated by:"}
             </span>
-            <span className={isUrduUI ? "font-urdu text-foreground text-sm" : "text-foreground font-sans"}>
+            <span className={isUrduUI ? "font-urdu text-foreground text-xs" : "text-foreground font-sans"}>
               {narrator[1].trim()}
             </span>
           </div>
         )}
         {book && (
           <div className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1 text-secondary-foreground border">
-            <span className={isUrduUI ? "font-urdu font-bold text-sm" : "font-bold"}>
+            <span className={isUrduUI ? "font-urdu font-bold text-xs" : "font-bold"}>
               {isUrduUI ? "کتاب:" : "Book:"}
             </span>
-            <span className={isUrduUI ? "font-urdu text-foreground text-sm" : "text-foreground font-sans"}>
+            <span className={isUrduUI ? "font-urdu text-foreground text-xs" : "text-foreground font-sans"}>
               {book[1].trim()}
             </span>
           </div>
@@ -419,7 +419,7 @@ function HadithBlock({ text }: { text: string }) {
             className="flex flex-wrap items-center gap-2 pt-0.5"
             dir={isUrduUI ? "rtl" : "ltr"}
           >
-            <span className={isUrduUI ? "font-urdu text-sm font-medium text-muted-foreground" : "text-xs font-medium text-muted-foreground font-sans"}>
+            <span className={isUrduUI ? "font-urdu text-xs font-medium text-muted-foreground" : "text-xs font-medium text-muted-foreground font-sans"}>
               — {resolved.label}
             </span>
             {resolved.url && (
@@ -445,15 +445,15 @@ function HadithBlock({ text }: { text: string }) {
         >
           <div className="flex items-center gap-2 border-b border-primary/15 bg-primary/10 px-4 py-2.5">
             <Sparkle className="size-4 text-primary shrink-0" />
-            <span className={`font-bold text-primary ${isExplanationUrdu ? "font-urdu text-base" : "text-xs uppercase tracking-wider font-sans"}`}>
+            <span className={`font-bold text-primary ${isExplanationUrdu ? "font-urdu text-xs" : "text-xs uppercase tracking-wider font-sans"}`}>
               {isExplanationUrdu ? "آسان تشریح و رہنمائی" : "Explanation & Guidance"}
             </span>
           </div>
-          <div className="p-4">
+          <div className="p-3.5 sm:p-4">
             <p
               className={
                 isExplanationUrdu
-                  ? "urdu text-foreground font-urdu text-[1.38rem] leading-[2.6] whitespace-pre-line text-right"
+                  ? "urdu text-foreground font-urdu text-[13px] sm:text-[15px] leading-[1.9] sm:leading-[2.1] whitespace-pre-line text-right"
                   : "text-sm sm:text-base leading-relaxed text-foreground whitespace-pre-line text-left font-sans"
               }
             >
@@ -489,18 +489,18 @@ function DuaBlock({ text }: { text: string }) {
   return (
     <div className="flex flex-col gap-3.5">
       {arabicMatch && (
-        <div dir="rtl" lang="ar" className="rounded-xl border border-gold/30 bg-gold/5 p-4 shadow-xs text-right">
-          <p className="dua-arabic text-foreground text-2xl leading-[2.8]">{arabicMatch[1].trim()}</p>
+        <div dir="rtl" lang="ar" className="rounded-xl border border-gold/30 bg-gold/5 p-3.5 sm:p-4 shadow-xs text-right">
+          <p className="dua-arabic text-foreground text-lg sm:text-2xl leading-[2.4] sm:leading-[2.8]">{arabicMatch[1].trim()}</p>
         </div>
       )}
       {transliterationMatch && (
-        <div dir="ltr" className="rounded-lg bg-muted/40 p-3.5 border text-left">
+        <div dir="ltr" className="rounded-lg bg-muted/40 p-3 sm:p-3.5 border text-left">
           <div className="flex items-center gap-1.5 mb-1 justify-start">
-            <span className="inline-block rounded-md bg-muted px-2.5 py-0.5 text-xs font-bold text-muted-foreground uppercase tracking-wider font-sans">
+            <span className="inline-block rounded-md bg-muted px-2 py-0.5 text-[10px] sm:text-xs font-bold text-muted-foreground uppercase tracking-wider font-sans">
               Transliteration
             </span>
           </div>
-          <p className="text-sm italic text-foreground leading-relaxed font-sans text-left">
+          <p className="text-xs sm:text-sm italic text-foreground leading-relaxed font-sans text-left">
             {transliterationMatch[1].trim()}
           </p>
         </div>
@@ -508,18 +508,18 @@ function DuaBlock({ text }: { text: string }) {
       {meaningText && (
         <div
           dir={isMeaningUrdu ? "rtl" : "ltr"}
-          className={`rounded-xl p-4 ${
+          className={`rounded-xl p-3.5 sm:p-4 ${
             isMeaningUrdu
               ? "border-r-4 border-gold/60 bg-gold/5 text-right"
               : "border-l-4 border-gold/60 bg-gold/5 text-left"
           }`}
         >
           <div className={`flex items-center gap-1.5 mb-1 ${isMeaningUrdu ? "justify-start" : ""}`}>
-            <span className={`inline-block rounded-md bg-gold/15 px-2.5 py-0.5 font-bold text-gold ${isMeaningUrdu ? "font-urdu text-xs" : "text-xs uppercase tracking-wider font-sans"}`}>
+            <span className={`inline-block rounded-md bg-gold/15 px-2 py-0.5 font-bold text-gold ${isMeaningUrdu ? "font-urdu text-[11px] sm:text-xs" : "text-[10px] sm:text-xs uppercase tracking-wider font-sans"}`}>
               {isMeaningUrdu ? "ترجمہ و مفہوم" : "Meaning"}
             </span>
           </div>
-          <p className={isMeaningUrdu ? "urdu text-foreground font-urdu text-[1.42rem] leading-[2.7]" : "text-sm sm:text-base leading-relaxed text-foreground font-sans"}>
+          <p className={isMeaningUrdu ? "urdu text-foreground font-urdu text-[14px] sm:text-[16px] leading-[2.0] sm:leading-[2.2]" : "text-sm sm:text-base leading-relaxed text-foreground font-sans"}>
             {meaningText}
           </p>
         </div>
@@ -536,16 +536,16 @@ function DuaBlock({ text }: { text: string }) {
 
         return (
           <div
-            className="flex flex-wrap items-center gap-2 pt-0.5"
+            className="flex flex-wrap items-center gap-2 pt-0.5 text-xs"
             dir={isUrduUI ? "rtl" : "ltr"}
           >
             {fromRaw && (
-              <span className={isUrduUI ? "font-urdu text-sm font-semibold text-foreground/90" : "text-xs font-semibold text-foreground/90 font-sans"}>
+              <span className={isUrduUI ? "font-urdu text-xs font-semibold text-foreground/90" : "text-xs font-semibold text-foreground/90 font-sans"}>
                 — {fromRaw}
               </span>
             )}
             {resolved.label && resolved.label !== fromRaw && (
-              <span className={isUrduUI ? "font-urdu text-sm font-medium text-muted-foreground" : "text-xs font-medium text-muted-foreground font-sans"}>
+              <span className={isUrduUI ? "font-urdu text-xs font-medium text-muted-foreground" : "text-xs font-medium text-muted-foreground font-sans"}>
                 <strong className={isUrduUI ? "font-urdu font-bold text-foreground" : "font-bold text-foreground"}>
                   {isUrduUI ? "حوالہ:" : "Reference:"}
                 </strong>{" "}
@@ -575,15 +575,15 @@ function DuaBlock({ text }: { text: string }) {
         >
           <div className="flex items-center gap-2 border-b border-gold/20 bg-gold/10 px-4 py-2.5">
             <HandHeart className="size-4 text-gold shrink-0" />
-            <span className={`font-bold text-gold ${isExplanationUrdu ? "font-urdu text-base" : "text-xs uppercase tracking-wider font-sans"}`}>
+            <span className={`font-bold text-gold ${isExplanationUrdu ? "font-urdu text-xs" : "text-xs uppercase tracking-wider font-sans"}`}>
               {isExplanationUrdu ? "آسان تشریح و فضیلت" : "Explanation & Virtue"}
             </span>
           </div>
-          <div className="p-4">
+          <div className="p-3.5 sm:p-4">
             <p
               className={
                 isExplanationUrdu
-                  ? "urdu text-foreground text-[1.38rem] font-urdu leading-[2.6] whitespace-pre-line text-right"
+                  ? "urdu text-foreground text-[13px] sm:text-[15px] font-urdu leading-[1.9] sm:leading-[2.1] whitespace-pre-line text-right"
                   : "text-sm sm:text-base leading-relaxed text-foreground whitespace-pre-line text-left font-sans"
               }
             >
@@ -596,7 +596,7 @@ function DuaBlock({ text }: { text: string }) {
         <div
           dir={isUrduUI ? "rtl" : "ltr"}
           className={`prose prose-sm max-w-none dark:prose-invert ${
-            isUrduUI ? "font-urdu text-[1.35rem] leading-[2.6] text-right" : "text-left font-sans"
+            isUrduUI ? "font-urdu text-[14px] sm:text-[16px] leading-[2.0] sm:leading-[2.2] text-right" : "text-left font-sans"
           }`}
         >
           <ReactMarkdown>{text}</ReactMarkdown>
@@ -618,28 +618,28 @@ function MdBlock({ text, title, isUrdu }: { text: string; title?: string; isUrdu
   return (
     <div
       dir={isBlockUrdu ? "rtl" : "ltr"}
-      className={`prose prose-sm max-w-none dark:prose-invert prose-headings:font-serif prose-headings:font-semibold prose-p:leading-relaxed prose-p:my-2 prose-ul:my-2 prose-li:my-1 prose-strong:text-primary ${
-        isBlockUrdu ? "font-urdu text-right text-[1.38rem] leading-[2.6]" : "text-left font-sans text-sm sm:text-base"
+      className={`prose prose-sm max-w-none dark:prose-invert prose-headings:font-serif prose-headings:font-semibold prose-p:leading-relaxed prose-p:my-1.5 prose-ul:my-1.5 prose-li:my-0.5 prose-strong:text-primary ${
+        isBlockUrdu ? "font-urdu text-right text-[14px] sm:text-[16px] leading-[2.0] sm:leading-[2.2]" : "text-left font-sans text-sm sm:text-base"
       }`}
     >
       <ReactMarkdown
         components={{
-          h1: ({ children }) => <h1 className={isBlockUrdu ? "urdu-heading text-2xl my-3" : "text-lg font-bold my-2 font-sans"}>{children}</h1>,
-          h2: ({ children }) => <h2 className={isBlockUrdu ? "urdu-heading text-xl my-2.5" : "text-base font-bold my-2 font-sans"}>{children}</h2>,
-          h3: ({ children }) => <h3 className={isBlockUrdu ? "urdu-heading text-lg my-2" : "text-sm font-bold my-1.5 font-sans"}>{children}</h3>,
+          h1: ({ children }) => <h1 className={isBlockUrdu ? "urdu-heading text-lg sm:text-xl my-2" : "text-lg font-bold my-2 font-sans"}>{children}</h1>,
+          h2: ({ children }) => <h2 className={isBlockUrdu ? "urdu-heading text-base sm:text-lg my-2" : "text-base font-bold my-2 font-sans"}>{children}</h2>,
+          h3: ({ children }) => <h3 className={isBlockUrdu ? "urdu-heading text-sm sm:text-base my-1.5" : "text-sm font-bold my-1.5 font-sans"}>{children}</h3>,
           ul: ({ children }) => (
-            <ul className={`space-y-2.5 my-2.5 ${isBlockUrdu ? "pr-1" : "pl-5 list-disc"}`}>
+            <ul className={`space-y-1.5 sm:space-y-2 my-2 ${isBlockUrdu ? "pr-1" : "pl-5 list-disc"}`}>
               {children}
             </ul>
           ),
           ol: ({ children }) => (
-            <ol className={`space-y-2.5 my-2.5 ${isBlockUrdu ? "pr-1" : "pl-5 list-decimal"}`}>
+            <ol className={`space-y-1.5 sm:space-y-2 my-2 ${isBlockUrdu ? "pr-1" : "pl-5 list-decimal"}`}>
               {children}
             </ol>
           ),
           li: ({ children }) => (
-            <li className={isBlockUrdu ? "flex items-start gap-2.5 text-[1.38rem] leading-[2.6]" : "leading-normal font-sans"}>
-              {isBlockUrdu && <span className="inline-block size-2.5 rounded-full bg-primary mt-4 shrink-0 shadow-xs" />}
+            <li className={isBlockUrdu ? "flex items-start gap-2 text-[13.5px] sm:text-[15.5px] leading-[2.0] sm:leading-[2.2]" : "leading-normal font-sans"}>
+              {isBlockUrdu && <span className="inline-block size-1.5 rounded-full bg-primary mt-2.5 shrink-0 shadow-xs" />}
               <span className="flex-1">{children}</span>
             </li>
           ),
@@ -680,7 +680,7 @@ export function MarkdownMessage({ text }: { text: string }) {
         if (g.kind === "ayah") return <AyahCard key={i} data={g.data} isUrdu={isMessageUrdu} />;
         if (g.kind === "ayah_loading") {
           return (
-            <div key={i} className="my-3 overflow-hidden rounded-2xl border border-primary/15 bg-card/60 p-4 shadow-xs animate-pulse">
+            <div key={i} className="my-2 sm:my-3 overflow-hidden rounded-2xl border border-primary/15 bg-card/60 p-3.5 sm:p-4 shadow-xs animate-pulse">
               <div className="flex items-center gap-3 mb-3">
                 <div className="h-4 w-28 rounded-md bg-primary/20" />
                 <div className="h-4 w-12 rounded-md bg-primary/10" />
@@ -700,7 +700,7 @@ export function MarkdownMessage({ text }: { text: string }) {
             key={i}
             type="multiple"
             defaultValue={[`item-0`]}
-            className="my-2 w-full overflow-hidden rounded-2xl border bg-card shadow-xs"
+            className="my-1.5 sm:my-2 w-full overflow-hidden rounded-xl sm:rounded-2xl border bg-card shadow-xs"
           >
             {g.items.map((s, idx) => {
               const displayTitle = getDisplayTitle(s.meta.title, isMessageUrdu);
@@ -712,21 +712,21 @@ export function MarkdownMessage({ text }: { text: string }) {
                   className="border-b last:border-b-0"
                 >
                   <AccordionTrigger
-                    className={`px-4 py-4 text-sm hover:no-underline transition-colors ${
+                    className={`px-3.5 sm:px-4 py-3 sm:py-3.5 text-xs sm:text-sm hover:no-underline transition-colors ${
                       isMessageUrdu ? "font-urdu text-right" : "text-left"
                     }`}
                     dir={isMessageUrdu ? "rtl" : "ltr"}
                   >
-                    <span className="flex items-center gap-3">
-                      <div className="flex items-center justify-center size-8 rounded-lg bg-primary/10 text-primary">
+                    <span className="flex items-center gap-2.5 sm:gap-3">
+                      <div className="flex items-center justify-center size-7 sm:size-8 rounded-lg bg-primary/10 text-primary shrink-0">
                         {s.meta.icon && ICONS[s.meta.icon]}
                       </div>
-                      <span className={isMessageUrdu ? "font-urdu text-[1.65rem] font-bold text-foreground leading-normal" : "font-semibold text-foreground font-sans"}>
+                      <span className={isMessageUrdu ? "font-urdu text-sm sm:text-base font-bold text-foreground leading-normal" : "font-semibold text-foreground font-sans text-xs sm:text-sm"}>
                         {displayTitle}
                       </span>
                     </span>
                   </AccordionTrigger>
-                  <AccordionContent className="px-4 pb-4 pt-1">
+                  <AccordionContent className="px-3.5 sm:px-4 pb-3.5 sm:pb-4 pt-1">
                     <MdBlock text={s.body} title={s.meta.title} isUrdu={isMessageUrdu} />
                   </AccordionContent>
                 </AccordionItem>

@@ -211,43 +211,43 @@
   }
   .urdu {
     font-family: var(--font-urdu);
-    font-size: 1.25rem;
-    line-height: 2.4;
+    font-size: 0.95rem;
+    line-height: 1.95;
     direction: rtl;
     text-align: right;
     word-break: normal;
     overflow-wrap: break-word;
   }
   @media (min-width: 640px) {
-    .urdu { font-size: 1.38rem; line-height: 2.6; }
+    .urdu { font-size: 1.05rem; line-height: 2.1; }
   }
   .urdu-heading {
     font-family: var(--font-urdu);
-    font-size: 1.45rem;
-    line-height: 2.1;
+    font-size: 1.1rem;
+    line-height: 1.8;
     font-weight: 700;
     color: var(--color-primary);
     direction: rtl;
     text-align: right;
   }
   @media (min-width: 640px) {
-    .urdu-heading { font-size: 1.65rem; line-height: 2.3; }
+    .urdu-heading { font-size: 1.25rem; line-height: 1.9; }
   }
   .urdu-title {
     font-family: var(--font-urdu);
-    font-size: 1.55rem;
-    line-height: 2.1;
+    font-size: 1.2rem;
+    line-height: 1.8;
     font-weight: 700;
     direction: rtl;
     text-align: right;
   }
   @media (min-width: 640px) {
-    .urdu-title { font-size: 1.85rem; line-height: 2.2; }
+    .urdu-title { font-size: 1.35rem; line-height: 1.9; }
   }
   .urdu-badge {
     font-family: var(--font-urdu);
-    font-size: 0.95rem;
-    line-height: 1.8;
+    font-size: 0.82rem;
+    line-height: 1.6;
     display: inline-flex;
     align-items: center;
     gap: 0.35rem;

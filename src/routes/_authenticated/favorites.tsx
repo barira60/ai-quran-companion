@@ -16,17 +16,17 @@ function FavoritesPage() {
 
   return (
     <AppShell>
-      <div className={`mx-auto max-w-3xl px-6 py-10 ${isUrdu ? "font-urdu text-right" : ""}`} dir={isUrdu ? "rtl" : "ltr"}>
-        <div className="flex items-center gap-3 mb-6">
-          <div className="rounded-lg bg-primary/10 p-2 text-primary">
-            <Heart className="size-5" />
+      <div className={`mx-auto max-w-3xl px-3.5 sm:px-6 py-4 sm:py-8 ${isUrdu ? "font-urdu text-right" : ""}`} dir={isUrdu ? "rtl" : "ltr"}>
+        <div className="flex items-center gap-2.5 sm:gap-3 mb-4 sm:mb-6">
+          <div className="rounded-lg bg-primary/10 p-1.5 sm:p-2 text-primary">
+            <Heart className="size-4 sm:size-5" />
           </div>
-          <h1 className={isUrdu ? "font-urdu text-2xl font-bold text-foreground" : "font-serif text-2xl font-semibold"}>
+          <h1 className={isUrdu ? "font-urdu text-xl sm:text-2xl font-bold text-foreground" : "font-serif text-lg sm:text-2xl font-semibold"}>
             {isUrdu ? "پسندیدہ محفوظ آیات و دعائیں" : "Saved verses"}
           </h1>
         </div>
         {data.length === 0 && (
-          <p className={isUrdu ? "font-urdu text-sm text-muted-foreground leading-loose" : "text-sm text-muted-foreground"}>
+          <p className={isUrdu ? "font-urdu text-xs sm:text-sm text-muted-foreground leading-relaxed" : "text-xs sm:text-sm text-muted-foreground"}>
             {isUrdu
               ? "آپ نے ابھی تک کوئی آیت محفوظ نہیں کی۔ چیٹ میں آیت کے بک مارک بٹن پر کلک کر کے اسے یہاں محفوظ کریں۔"
               : "You haven't saved any verses yet. Tap the bookmark on an ayah card in the chat to keep it here."}

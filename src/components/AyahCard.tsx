@@ -211,7 +211,7 @@ export function AyahCard({ data, isUrdu, onRemove }: AyahCardProps) {
       {currentTranslation && (
         <div className="px-4 pb-2 pt-3 sm:px-6" dir={showUrdu ? "rtl" : "ltr"}>
           {showUrdu ? (
-            <p className="urdu text-foreground font-urdu text-[1.45rem] leading-[2.7] text-right">
+            <p className="urdu text-foreground font-urdu text-[14px] sm:text-[16px] leading-[2.0] sm:leading-[2.2] text-right">
               {currentTranslation}
             </p>
           ) : (
@@ -219,9 +219,9 @@ export function AyahCard({ data, isUrdu, onRemove }: AyahCardProps) {
               {currentTranslation}
             </p>
           )}
-          <div className="mt-2 flex items-center gap-1.5 text-xs text-muted-foreground">
-            <span>{showUrdu ? "ترجمہ:" : "Translation:"}</span>
-            <span className="font-medium text-foreground/80">
+          <div className="mt-1.5 flex items-center gap-1.5 text-xs text-muted-foreground">
+            <span className={showUrdu ? "font-urdu text-xs" : ""}>{showUrdu ? "ترجمہ:" : "Translation:"}</span>
+            <span className={`font-medium text-foreground/80 ${showUrdu ? "font-urdu text-xs" : ""}`}>
               {showUrdu ? "فتح محمد جالندھری (اردو)" : "Saheeh International (English)"}
             </span>
           </div>
@@ -231,12 +231,12 @@ export function AyahCard({ data, isUrdu, onRemove }: AyahCardProps) {
       {data.explanation && (
         <div
           dir={showUrdu ? "rtl" : "ltr"}
-          className="mx-4 mb-4 mt-2 rounded-xl border border-primary/15 bg-primary/5 px-4 py-3 sm:mx-6"
+          className="mx-3.5 mb-3.5 mt-2 rounded-xl border border-primary/15 bg-primary/5 px-3.5 py-2.5 sm:mx-6 sm:mb-4 sm:px-4 sm:py-3"
         >
-          <div className={`mb-1 font-bold text-primary ${showUrdu ? "font-urdu text-base text-right" : "text-[10px] uppercase tracking-wide text-left font-sans"}`}>
+          <div className={`mb-1 font-bold text-primary ${showUrdu ? "font-urdu text-xs text-right" : "text-[10px] uppercase tracking-wide text-left font-sans"}`}>
             {showUrdu ? "آسان قرآنی مفہوم" : "In simple words"}
           </div>
-          <p className={showUrdu ? "urdu text-foreground text-[1.38rem] font-urdu leading-[2.6] text-right" : "text-[13px] leading-relaxed text-foreground sm:text-sm text-left font-sans"}>
+          <p className={showUrdu ? "urdu text-foreground text-[13px] sm:text-[15px] font-urdu leading-[1.9] sm:leading-[2.1] text-right" : "text-[13px] leading-relaxed text-foreground sm:text-sm text-left font-sans"}>
             {data.explanation}
           </p>
         </div>
