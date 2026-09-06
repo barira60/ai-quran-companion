@@ -46,13 +46,12 @@ export function SplashScreen() {
       {/* Center Logo & Title */}
       <div className="flex flex-col items-center text-center my-auto space-y-4 sm:space-y-5 animate-in fade-in zoom-in-95 duration-400">
         <div className="relative">
-          <div className="absolute -inset-2.5 rounded-3xl bg-white/25 blur-md" />
           <img
             src={logo}
             alt="قرآن و سنت رہنمائی"
-            width={110}
-            height={110}
-            className="relative size-24 sm:size-28 rounded-2xl sm:rounded-3xl shadow-2xl object-cover ring-2 ring-white/40"
+            width={120}
+            height={120}
+            className="size-28 sm:size-32 object-contain drop-shadow-2xl"
           />
         </div>
 

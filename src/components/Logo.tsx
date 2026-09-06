@@ -10,13 +10,14 @@ export function Logo({
   compact?: boolean;
 }) {
   return (
-    <div className="flex items-center gap-2.5 shrink-0">
+    <div className="flex items-center gap-2 shrink-0">
       <img
         src={logo}
         alt="قرآن و سنت رہنمائی"
         width={size}
         height={size}
-        className="rounded-xl shrink-0 object-cover shadow-2xs aspect-square border border-emerald-500/20"
+        className="shrink-0 object-contain drop-shadow-xs"
+        style={{ width: size, height: size }}
       />
       {withWordmark && (
         <span className="font-serif font-bold tracking-tight text-foreground whitespace-nowrap text-base sm:text-lg">
@@ -27,4 +28,5 @@ export function Logo({
     </div>
   );
 }
+
 
