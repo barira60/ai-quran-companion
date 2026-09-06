@@ -6,9 +6,8 @@
 @source "../src";
 
 @font-face {
-  font-family: "Al Qalam Quran Majeed";
-  src: url("/fonts/al-qalam-quran-majeed-1.woff2") format("woff2"),
-       url("/fonts/al-qalam-quran-majeed.woff2") format("woff2");
+  font-family: "KFGQPC Uthmanic Script HAFS";
+  src: url("https://cdn.jsdelivr.net/npm/quran-font@1.0.0/dist/fonts/uthmanic_hafs.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -34,7 +33,7 @@
 
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Plus Jakarta Sans", ui-serif, Georgia, serif;
-  --font-arabic: "Al Qalam Quran Majeed", "Amiri Quran", "Scheherazade New", "Amiri", "Noto Naskh Arabic", serif;
+  --font-arabic: "Amiri Quran", "KFGQPC Uthmanic Script HAFS", "Scheherazade New", "Amiri", "Noto Naskh Arabic", serif;
   --font-urdu: "Jameel Noori Nastaleeq", "Noto Nastaliq Urdu", "Urdu Typesetting", serif;
 
   --color-background: var(--background);
@@ -99,54 +98,58 @@
   --destructive: oklch(0.6 0.22 25);
   --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(0.9 0.015 120);
-  --input: oklch(0.92 0.015 120);
-  --ring: oklch(0.5 0.1 160);
+  --border: oklch(0.9 0.02 150);
+  --input: oklch(0.9 0.02 150);
+  --ring: oklch(0.42 0.09 160);
 
-  --sidebar: oklch(0.97 0.015 100);
-  --sidebar-foreground: oklch(0.25 0.03 160);
+  --sidebar: oklch(0.97 0.015 95);
+  --sidebar-foreground: oklch(0.22 0.025 160);
   --sidebar-primary: oklch(0.42 0.09 160);
   --sidebar-primary-foreground: oklch(0.985 0.012 95);
-  --sidebar-accent: oklch(0.93 0.03 130);
-  --sidebar-accent-foreground: oklch(0.3 0.05 160);
-  --sidebar-border: oklch(0.9 0.015 120);
-  --sidebar-ring: oklch(0.5 0.1 160);
+  --sidebar-accent: oklch(0.92 0.03 150);
+  --sidebar-accent-foreground: oklch(0.22 0.025 160);
+  --sidebar-border: oklch(0.88 0.02 150);
+  --sidebar-ring: oklch(0.42 0.09 160);
 }
 
 .dark {
-  --background: oklch(0.18 0.02 160);
-  --foreground: oklch(0.96 0.01 95);
-  --card: oklch(0.22 0.025 160);
-  --card-foreground: oklch(0.96 0.01 95);
-  --popover: oklch(0.22 0.025 160);
-  --popover-foreground: oklch(0.96 0.01 95);
+  /* Midnight Quran palette: deep slate-emerald bg, luminous mint text */
+  --background: oklch(0.14 0.025 165);
+  --foreground: oklch(0.94 0.015 150);
 
-  --primary: oklch(0.7 0.13 155);
-  --primary-foreground: oklch(0.15 0.02 160);
+  --card: oklch(0.18 0.03 165);
+  --card-foreground: oklch(0.94 0.015 150);
+  --popover: oklch(0.18 0.03 165);
+  --popover-foreground: oklch(0.94 0.015 150);
 
-  --secondary: oklch(0.28 0.04 160);
-  --secondary-foreground: oklch(0.96 0.01 95);
-  --muted: oklch(0.26 0.03 160);
-  --muted-foreground: oklch(0.72 0.02 100);
-  --accent: oklch(0.3 0.05 160);
-  --accent-foreground: oklch(0.96 0.01 95);
+  --primary: oklch(0.72 0.14 160);                /* radiant mint */
+  --primary-foreground: oklch(0.12 0.03 165);
 
-  --gold: oklch(0.82 0.14 80);
-  --gold-foreground: oklch(0.2 0.03 80);
+  --secondary: oklch(0.24 0.035 165);
+  --secondary-foreground: oklch(0.92 0.02 150);
+
+  --muted: oklch(0.22 0.025 165);
+  --muted-foreground: oklch(0.72 0.03 150);
+
+  --accent: oklch(0.26 0.04 160);
+  --accent-foreground: oklch(0.94 0.02 150);
+
+  --gold: oklch(0.82 0.14 85);
+  --gold-foreground: oklch(0.18 0.04 85);
 
   --destructive: oklch(0.65 0.22 25);
-  --destructive-foreground: oklch(0.98 0 0);
+  --destructive-foreground: oklch(0.99 0 0);
 
-  --border: oklch(1 0 0 / 12%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.6 0.1 160);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 12%);
+  --ring: oklch(0.72 0.14 160);
 
-  --sidebar: oklch(0.2 0.025 160);
-  --sidebar-foreground: oklch(0.96 0.01 95);
-  --sidebar-primary: oklch(0.7 0.13 155);
-  --sidebar-primary-foreground: oklch(0.15 0.02 160);
-  --sidebar-accent: oklch(0.28 0.04 160);
-  --sidebar-accent-foreground: oklch(0.96 0.01 95);
+  --sidebar: oklch(0.12 0.025 165);
+  --sidebar-foreground: oklch(0.94 0.015 150);
+  --sidebar-primary: oklch(0.72 0.14 160);
+  --sidebar-primary-foreground: oklch(0.12 0.03 165);
+  --sidebar-accent: oklch(0.2 0.03 165);
+  --sidebar-accent-foreground: oklch(0.94 0.015 150);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.6 0.1 160);
 }
@@ -173,13 +176,13 @@
     --sar: env(safe-area-inset-right, 0px);
   }
 
-  .font-arabic { font-family: var(--font-arabic); }
+  .font-arabic { font-family: var(--font-arabic); font-weight: 400; }
   .font-urdu { font-family: var(--font-urdu); }
   .arabic {
     font-family: var(--font-arabic);
-    font-size: 1.68rem;
+    font-weight: 400;
+    font-size: 1.55rem;
     line-height: 2.65;
-    font-weight: 600;
     direction: rtl;
     unicode-bidi: isolate;
     text-align: right;
@@ -191,13 +194,13 @@
     -moz-osx-font-smoothing: grayscale;
   }
   @media (min-width: 640px) {
-    .arabic { font-size: 2.15rem; line-height: 3.1; font-weight: 600; }
+    .arabic { font-size: 2.05rem; line-height: 3.1; font-weight: 400; }
   }
   .dua-arabic {
     font-family: var(--font-arabic);
-    font-size: 1.5rem;
-    line-height: 2.55;
-    font-weight: 600;
+    font-weight: 400;
+    font-size: 1.45rem;
+    line-height: 2.5;
     direction: rtl;
     unicode-bidi: isolate;
     text-align: right;
@@ -209,7 +212,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
   @media (min-width: 640px) {
-    .dua-arabic { font-size: 1.85rem; line-height: 2.9; }
+    .dua-arabic { font-size: 1.85rem; line-height: 2.9; font-weight: 400; }
   }
   .urdu {
     font-family: var(--font-urdu);

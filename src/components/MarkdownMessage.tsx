@@ -491,7 +491,7 @@ function DuaBlock({ text }: { text: string }) {
     <div className="flex flex-col gap-3.5">
       {arabicMatch && (
         <div dir="rtl" lang="ar" className="rounded-xl border border-gold/30 bg-gold/5 p-3.5 sm:p-4 shadow-xs text-right">
-          <p className="dua-arabic text-foreground text-xl sm:text-2xl leading-[2.6] sm:leading-[2.8]">{arabicMatch[1].trim()}</p>
+          <p className="dua-arabic text-foreground font-normal text-xl sm:text-2xl leading-[2.6] sm:leading-[2.8]">{arabicMatch[1].trim()}</p>
         </div>
       )}
       {transliterationMatch && (

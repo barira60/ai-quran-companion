@@ -1,5 +1,4 @@
 import hero from "@/assets/hero.jpg";
-import { AyahCard } from "@/components/AyahCard";
 import { LanguageToggle } from "@/components/LanguageToggle";
 import { Logo } from "@/components/Logo";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -7,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { useLanguage } from "@/lib/language-store";
 import { createLocalThread } from "@/lib/local-store";
 import { Link, createFileRoute, useNavigate } from "@tanstack/react-router";
-import { BookHeart, Heart, MessageCircleHeart, Sparkles, Compass, ShieldCheck } from "lucide-react";
+import { BookHeart, Heart, MessageCircleHeart, ShieldCheck, Sparkles } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -16,7 +15,7 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Share how you feel and receive Quranic verses, authentic hadith, duas, and practical Islamic guidance from a thoughtful AI companion.",
+          "Share how you feel and receive Quranic verses, hadith, duas, and practical Islamic guidance from a thoughtful AI companion.",
       },
       { property: "og:title", content: "Quran Companion AI" },
       {
@@ -30,11 +29,12 @@ export const Route = createFileRoute("/")({
 });
 
 const QUICK_MOODS = [
-  { en: "Stress", ur: "پریشانی", color: "border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400" },
-  { en: "Anxiety", ur: "بے چینی", color: "border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400" },
-  { en: "Sadness", ur: "اداسی و غم", color: "border-blue-500/30 bg-blue-500/10 text-blue-600 dark:text-blue-400" },
-  { en: "Patience", ur: "صبر و استقامت", color: "border-teal-500/30 bg-teal-500/10 text-teal-600 dark:text-teal-400" },
-  { en: "Gratitude", ur: "شکر گزاری", color: "border-orange-500/30 bg-orange-500/10 text-orange-600 dark:text-orange-400" },
+  { en: "Stress", ur: "پریشانی", color: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20" },
+  { en: "Anxiety", ur: "بے چینی", color: "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20" },
+  { en: "Sadness", ur: "اداسی", color: "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20" },
+  { en: "Patience", ur: "صبر", color: "bg-teal-500/10 text-teal-600 dark:text-teal-400 border-teal-500/20" },
+  { en: "Tawakkul", ur: "توکل", color: "bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20" },
+  { en: "Gratitude", ur: "شکر", color: "bg-orange-500/10 text-orange-600 dark:text-orange-400 border-orange-500/20" },
 ];
 
 function Landing() {
@@ -42,53 +42,47 @@ function Landing() {
   const navigate = useNavigate();
   const isUrdu = appLang === "ur";
 
-  const startWithMood = (mood: string, urMood: string) => {
-    const title = isUrdu ? `ہیلنگ موڈ · ${urMood}` : `Healing · ${mood}`;
-    const t = createLocalThread({ mood, title });
+  const startWithMood = (moodEn: string, moodUr: string) => {
+    const title = isUrdu ? `ہیلنگ موڈ · ${moodUr}` : `Healing · ${moodEn}`;
+    const t = createLocalThread({ mood: moodEn, title });
     navigate({ to: "/chat/$threadId", params: { threadId: t.id } });
   };
 
   return (
-    <div className={`min-h-[100dvh] bg-background flex flex-col ${isUrdu ? "font-urdu" : ""}`} dir={isUrdu ? "rtl" : "ltr"}>
+    <div className={`min-h-[100dvh] bg-background flex flex-col ${isUrdu ? "font-urdu text-right" : ""}`} dir={isUrdu ? "rtl" : "ltr"}>
       {/* Header */}
-      <header className="sticky top-0 z-40 mx-auto flex w-full max-w-6xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4 bg-background/80 backdrop-blur-md border-b">
-        <Link to="/">
-          <Logo size={30} withWordmark />
-        </Link>
-        <div className="flex items-center gap-2 sm:gap-3">
+      <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-4 sm:px-6 py-3 sm:py-4 pt-[calc(0.75rem+env(safe-area-inset-top,0px))]">
+        <Logo size={28} withWordmark />
+        <div className="flex items-center gap-2">
           <LanguageToggle />
           <ThemeToggle />
-          <Button size="sm" className={`h-8 sm:h-9 px-3 sm:px-4 text-xs sm:text-sm font-medium rounded-xl shadow-xs ${isUrdu ? "font-urdu text-sm" : ""}`} asChild>
+          <Button size="sm" className={`h-8 sm:h-9 px-3 sm:px-4 text-xs sm:text-sm font-medium ${isUrdu ? "font-urdu text-sm" : ""}`} asChild>
             <Link to="/chat">{isUrdu ? "شروع کریں" : "Get started"}</Link>
           </Button>
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="mx-auto grid max-w-6xl flex-1 gap-8 sm:gap-12 px-4 sm:px-6 py-6 sm:py-12 md:grid-cols-2 md:items-center">
-        <div className="space-y-4 sm:space-y-6 text-left" dir={isUrdu ? "rtl" : "ltr"}>
-          <div className="inline-flex items-center gap-2 rounded-full border border-gold/30 bg-gold/10 px-3 py-1 text-xs text-gold font-medium">
-            <Sparkles className="size-3.5 shrink-0" />
-            <span className={isUrdu ? "font-urdu text-xs sm:text-sm" : ""}>
-              {isUrdu ? "قرآن و سنت سے براہ راست رہنمائی" : "Guidance from Qur'an & Sunnah"}
+      <section className="mx-auto grid max-w-6xl flex-1 gap-6 sm:gap-10 px-4 sm:px-6 py-4 sm:py-10 md:grid-cols-2 md:items-center">
+        <div className="space-y-4 sm:space-y-6">
+          <div className="inline-flex items-center gap-1.5 rounded-full border bg-card px-3 py-1 text-xs shadow-2xs">
+            <Sparkles className="size-3.5 text-gold shrink-0" />
+            <span className={`text-muted-foreground font-medium ${isUrdu ? "font-urdu text-xs" : ""}`}>
+              {isUrdu ? "قرآن و سنت کی روشنی میں رہنمائی" : "Guidance from Qur'an & Sunnah"}
             </span>
           </div>
 
-          <h1 className={`font-serif text-3xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight text-foreground ${isUrdu ? "font-urdu text-3xl sm:text-4xl md:text-5xl leading-[1.6]" : ""}`}>
+          <h1 className={`font-serif text-2xl sm:text-4xl md:text-5xl font-bold leading-tight tracking-tight text-foreground ${isUrdu ? "font-urdu text-3xl sm:text-4xl md:text-5xl leading-[1.8]" : ""}`}>
             {isUrdu ? (
-              <>
-                قرآن پاک کی ہر آیت میں <span className="text-primary underline decoration-gold/40">سکون اور رہنمائی</span> پائیں۔
-              </>
+              <>ہر مشکل اور لمحے میں <span className="text-primary">قرآنی سکون</span> پائیں۔</>
             ) : (
-              <>
-                Find peace in every <span className="text-primary underline decoration-gold/40">Ayah</span>.
-              </>
+              <>Find peace in every <span className="text-primary">Ayah</span>.</>
             )}
           </h1>
 
-          <p className={`text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground ${isUrdu ? "font-urdu text-base sm:text-lg leading-[2.1]" : ""}`}>
+          <p className={`text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground ${isUrdu ? "font-urdu text-base sm:text-lg leading-[2.2]" : ""}`}>
             {isUrdu
-              ? "اپنی کیفیت، پریشانی یا سوال بیان کریں — اداسی، خوف، بے چینی، شکر — اور قرآن و سنت سے براہ راست منتخب آیات، احادیث اور مسنون دعائیں حاصل کریں۔"
+              ? "اپنی جذباتی کیفیت اور دلی کیفیات کھل کر بیان کریں۔ قرآن کی آیات، صحیح احادیث، مسنون دعائیں اور عملی اسلامی رہنمائی حاصل کریں۔"
               : "Share how you're feeling — stress, sadness, fear, gratitude — and receive Qur'anic verses, authentic hadith, duas, and practical Islamic steps tailored to your moment."}
           </p>
 
@@ -135,37 +129,16 @@ function Landing() {
           </p>
         </div>
 
-        {/* Hero Showcase Side */}
-        <div className="relative flex flex-col gap-4">
-          <div className="relative">
-            <img
-              src={hero}
-              alt="An open Qur'an bathed in gentle light"
-              width={1536}
-              height={1024}
-              className="w-full max-h-56 sm:max-h-72 object-cover rounded-2xl sm:rounded-3xl border shadow-lg"
-            />
-            <div className="absolute inset-0 rounded-2xl sm:rounded-3xl ring-2 ring-gold/25 pointer-events-none" />
-          </div>
-
-          {/* Live Ayah Showcase Card */}
-          <AyahCard
-            data={{
-              surah: 65,
-              ayah: 3,
-              name: "Surah At-Talaq",
-              arabic: "وَيَرْزُقْهُ مِنْ حَيْثُ لَا يَحْتَسِبُ وَمَن يَتَوَكَّلْ عَلَى اللَّهِ فَهُوَ حَسْبُهُ",
-              translation:
-                "And will provide for him from where he does not expect. And whoever relies upon Allah - then He is sufficient for him.",
-              urduTranslation:
-                "اور اس کو ایسی جگہ سے رزق دے گا جہاں سے (وہم و) گمان بھی نہ ہو۔ اور جو خدا پر بھروسہ رکھے گا تو وہ اس کو کفایت کرے گا۔",
-              explanation:
-                isUrdu
-                  ? "جب انسان اپنا معاملہ خلوص دل سے اللہ کے سپرد کر دیتا ہے تو اللہ اس کے لیے کفایت کرتا ہے۔"
-                  : "When a believer places their complete trust in Allah, Allah becomes sufficient for all their needs.",
-            }}
-            isUrdu={isUrdu}
+        {/* Hero Image */}
+        <div className="relative mt-2 md:mt-0">
+          <img
+            src={hero}
+            alt="An open Qur'an on a wooden stand bathed in warm dawn light"
+            width={1536}
+            height={1024}
+            className="w-full max-h-64 sm:max-h-96 md:max-h-none object-cover rounded-2xl sm:rounded-3xl border shadow-lg"
           />
+          <div className="absolute inset-0 rounded-2xl sm:rounded-3xl ring-1 ring-gold/20 pointer-events-none" />
         </div>
       </section>
 
@@ -231,3 +204,4 @@ function Landing() {
     </div>
   );
 }
+
