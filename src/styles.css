@@ -6,6 +6,15 @@
 @source "../src";
 
 @font-face {
+  font-family: "Al Qalam Quran Majeed";
+  src: url("/fonts/al-qalam-quran-majeed.woff2") format("woff2"),
+       url("/fonts/al-qalam-quran-majeed-1.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "KFGQPC Uthmanic Script HAFS";
   src: url("https://cdn.jsdelivr.net/npm/quran-font@1.0.0/dist/fonts/uthmanic_hafs.woff2") format("woff2");
   font-weight: 400;
@@ -33,7 +42,7 @@
 
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-serif: "Plus Jakarta Sans", ui-serif, Georgia, serif;
-  --font-arabic: "Amiri Quran", "KFGQPC Uthmanic Script HAFS", "Scheherazade New", "Amiri", "Noto Naskh Arabic", serif;
+  --font-arabic: "Al Qalam Quran Majeed", "Amiri Quran", "KFGQPC Uthmanic Script HAFS", "Scheherazade New", "Amiri", "Noto Naskh Arabic", serif;
   --font-urdu: "Jameel Noori Nastaleeq", "Noto Nastaliq Urdu", "Urdu Typesetting", serif;
 
   --color-background: var(--background);
@@ -176,11 +185,18 @@
     --sar: env(safe-area-inset-right, 0px);
   }
 
-  .font-arabic { font-family: var(--font-arabic); font-weight: 400; }
+  .font-arabic {
+    font-family: var(--font-arabic);
+    font-weight: 400 !important;
+    font-synthesis: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
   .font-urdu { font-family: var(--font-urdu); }
   .arabic {
     font-family: var(--font-arabic);
-    font-weight: 400;
+    font-weight: 400 !important;
+    font-synthesis: none;
     font-size: 1.55rem;
     line-height: 2.65;
     direction: rtl;
@@ -194,11 +210,12 @@
     -moz-osx-font-smoothing: grayscale;
   }
   @media (min-width: 640px) {
-    .arabic { font-size: 2.05rem; line-height: 3.1; font-weight: 400; }
+    .arabic { font-size: 2.05rem; line-height: 3.1; font-weight: 400 !important; }
   }
   .dua-arabic {
     font-family: var(--font-arabic);
-    font-weight: 400;
+    font-weight: 400 !important;
+    font-synthesis: none;
     font-size: 1.45rem;
     line-height: 2.5;
     direction: rtl;
@@ -212,7 +229,7 @@
     -moz-osx-font-smoothing: grayscale;
   }
   @media (min-width: 640px) {
-    .dua-arabic { font-size: 1.85rem; line-height: 2.9; font-weight: 400; }
+    .dua-arabic { font-size: 1.85rem; line-height: 2.9; font-weight: 400 !important; }
   }
   .urdu {
     font-family: var(--font-urdu);
