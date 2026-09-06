@@ -1,15 +1,15 @@
 {
   "id": "/",
-  "name": "Quran Companion AI",
-  "short_name": "Quran AI",
-  "description": "Guidance from the Qur'an and Sunnah for your daily struggles and emotional healing.",
+  "name": "قرآن و سنت رہنمائی — AI Quran Companion",
+  "short_name": "قرآن رہنمائی",
+  "description": "قرآن و سنت کی روشنی میں رہنمائی اور روحانی تسکین — Guidance from the Qur'an and Sunnah.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "portrait-primary",
-  "background_color": "#090d12",
-  "theme_color": "#10b981",
+  "background_color": "#4ea884",
+  "theme_color": "#4ea884",
   "categories": ["lifestyle", "education", "books"],
   "icons": [
     {

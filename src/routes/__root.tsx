@@ -68,6 +68,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 import { InstallPwaPrompt } from "@/components/InstallPwaPrompt";
+import { SplashScreen } from "@/components/SplashScreen";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
@@ -81,10 +82,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Quran Companion AI listens to how you feel and shares relevant verses, hadith, duas, and practical steps from the Qur'an and Sunnah.",
       },
       { name: "author", content: "Quran Companion AI" },
-      { name: "theme-color", content: "#10b981" },
+      { name: "theme-color", content: "#4ea884" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
-      { name: "apple-mobile-web-app-title", content: "Quran AI" },
+      { name: "apple-mobile-web-app-title", content: "قرآن و سنت رہنمائی" },
       { property: "og:title", content: "Quran Companion AI" },
       {
         property: "og:description",
@@ -97,6 +98,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     links: [
       { rel: "manifest", href: "/manifest.json" },
       { rel: "apple-touch-icon", href: "/apple-touch-icon.png" },
+      { rel: "apple-touch-startup-image", href: "/splash.jpg" },
       { rel: "icon", type: "image/png", href: "/pwa-192x192.png" },
       { rel: "stylesheet", href: appCss },
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -153,6 +155,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <SplashScreen />
       <Outlet />
       <InstallPwaPrompt />
       <Toaster richColors position="top-center" />

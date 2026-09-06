@@ -10,6 +10,7 @@ const STATIC_ASSETS = [
   "/pwa-192x192.png",
   "/pwa-512x512.png",
   "/apple-touch-icon.png",
+  "/splash.jpg",
   "/fonts/al-qalam-quran-majeed.woff2",
   "/fonts/al-qalam-quran-majeed-1.woff2",
   "/fonts/jameel-noori-nastaleeq.woff2"
