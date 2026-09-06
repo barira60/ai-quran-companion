@@ -141,7 +141,7 @@ function RootComponent() {
       document.documentElement.classList.toggle("dark", dark);
 
       // Register PWA Service Worker
-      if ("serviceWorker" in navigator && process.env.NODE_ENV === "production") {
+      if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
           navigator.serviceWorker.register("/sw.js").catch((err) => {
             console.warn("PWA ServiceWorker registration failed: ", err);
