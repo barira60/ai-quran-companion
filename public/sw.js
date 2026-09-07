@@ -1,5 +1,5 @@
 // Quran Companion AI - Service Worker
-const CACHE_NAME = "quran-companion-v6";
+const CACHE_NAME = "quran-companion-v7";
 const AUDIO_CACHE_NAME = "quran-audio-cache-v1";
 const DATA_CACHE_NAME = "quran-data-cache-v1";
 
