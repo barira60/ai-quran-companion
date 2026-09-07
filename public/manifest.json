@@ -1,15 +1,15 @@
 {
   "id": "/",
-  "name": "قرآن و سنت رہنمائی — AI Quran Companion",
+  "name": "قرآن و سنت سے رہنمائی — AI Quran Companion",
   "short_name": "قرآن رہنمائی",
-  "description": "قرآن و سنت کی روشنی میں رہنمائی اور روحانی تسکین — Guidance from the Qur'an and Sunnah.",
+  "description": "قرآن و سنت سے رہنمائی اور روحانی تسکین — Guidance from the Qur'an and Sunnah.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "display_override": ["window-controls-overlay", "standalone", "minimal-ui"],
   "orientation": "portrait-primary",
-  "background_color": "#3e9b77",
-  "theme_color": "#3e9b77",
+  "background_color": "#0b1b15",
+  "theme_color": "#0b1b15",
   "categories": ["lifestyle", "education", "books"],
   "icons": [
     {

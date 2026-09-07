@@ -247,7 +247,7 @@ export function AppShell({ children }: { children: ReactNode }) {
           <div className="hidden md:flex items-center gap-2.5 text-xs text-muted-foreground">
             <span className="inline-block size-2.5 rounded-full bg-emerald-500 animate-pulse shadow-xs" />
             <span className={isUrdu ? "font-urdu text-base text-foreground/90 font-bold" : "font-semibold text-foreground/90 text-sm"}>
-              {isUrdu ? "قرآن و سنت رہنمائی" : "Quran & Sunnah Guidance"}
+              {isUrdu ? "قرآن و سنت سے رہنمائی" : "Quran & Sunnah Guidance"}
             </span>
           </div>
 

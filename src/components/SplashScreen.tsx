@@ -3,16 +3,40 @@ import { useEffect, useState } from "react";
 
 export function SplashScreen() {
   const [shouldRender, setShouldRender] = useState(() => {
-    if (typeof window === "undefined") return true;
-    return !sessionStorage.getItem("qc.splash-shown");
+    if (typeof window === "undefined") return false;
+
+    const isStandalone =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      (window.navigator as unknown as { standalone?: boolean }).standalone === true;
+
+    // Desktop browser visitors skip splash for instant access
+    const isDesktop = window.innerWidth >= 1024 && !isStandalone;
+    if (isDesktop) return false;
+
+    // First visit per session check for web visitors
+    const alreadyShown = sessionStorage.getItem("qc.splash-shown");
+    if (alreadyShown && !isStandalone) return false;
+
+    return true;
   });
+
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
+    const isStandalone =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      (window.navigator as unknown as { standalone?: boolean }).standalone === true;
+
+    const isDesktop = window.innerWidth >= 1024 && !isStandalone;
+    if (isDesktop) {
+      setShouldRender(false);
+      return;
+    }
+
     const alreadyShown = sessionStorage.getItem("qc.splash-shown");
-    if (alreadyShown) {
+    if (alreadyShown && !isStandalone) {
       setShouldRender(false);
       return;
     }
@@ -35,11 +59,11 @@ export function SplashScreen() {
   return (
     <div
       aria-hidden="true"
-      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-between bg-[#3e9b77] dark:bg-[#0b1b15] px-6 py-10 sm:py-14 select-none transition-all duration-600 ease-out ${
+      className={`fixed inset-0 z-[99999] flex flex-col items-center justify-between bg-[#0b1b15] px-6 py-10 sm:py-14 select-none transition-all duration-600 ease-out ${
         fading ? "opacity-0 scale-105 pointer-events-none" : "opacity-100 scale-100 pointer-events-auto"
       }`}
       style={{
-        backgroundImage: `radial-gradient(circle at 50% 38%, rgba(255, 255, 255, 0.18), transparent 65%), radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.08) 1px, transparent 0)`,
+        backgroundImage: `radial-gradient(circle at 50% 38%, rgba(16, 185, 129, 0.16), transparent 65%), radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.05) 1px, transparent 0)`,
         backgroundSize: "100% 100%, 24px 24px",
       }}
     >
@@ -52,11 +76,11 @@ export function SplashScreen() {
           <QuranLogo size={112} className="size-28 sm:size-32" />
         </div>
 
-        <div className="space-y-1 pt-1.5">
-          <h1 className="font-urdu text-3xl sm:text-4xl font-bold text-white tracking-wide drop-shadow-md">
-            قرآن و سنت رہنمائی
+        <div className="space-y-1.5 pt-1.5 flex flex-col items-center" dir="rtl">
+          <h1 className="font-urdu text-3xl sm:text-4xl font-bold text-white tracking-normal leading-[1.8] drop-shadow-md">
+            قرآن و سنت سے رہنمائی
           </h1>
-          <p className="text-[11px] sm:text-xs font-semibold tracking-widest text-white/90 uppercase font-sans">
+          <p className="text-[11px] sm:text-xs font-semibold tracking-widest text-white/90 uppercase font-sans" dir="ltr">
             AI Quran & Sunnah Companion
           </p>
         </div>
@@ -70,9 +94,12 @@ export function SplashScreen() {
       </div>
 
       {/* Bottom Tagline */}
-      <div className="w-full text-center pb-[calc(1.2rem+env(safe-area-inset-bottom,0px))]">
-        <p className="font-urdu text-base sm:text-lg text-white/95 font-medium tracking-wide drop-shadow-sm">
+      <div className="w-full text-center pb-[calc(1.2rem+env(safe-area-inset-bottom,0px))] space-y-1">
+        <p className="font-urdu text-base sm:text-lg text-white/95 font-normal tracking-normal leading-[1.9] drop-shadow-sm" dir="rtl">
           قرآن سے جڑیں، سمجھیں، غور کریں۔
+        </p>
+        <p className="text-[10px] sm:text-[11px] font-medium tracking-[0.2em] text-emerald-200/80 uppercase font-sans" dir="ltr">
+          Connect • Understand • Reflect
         </p>
       </div>
     </div>

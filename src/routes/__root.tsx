@@ -83,10 +83,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Quran Companion AI listens to how you feel and shares relevant verses, hadith, duas, and practical steps from the Qur'an and Sunnah.",
       },
       { name: "author", content: "Quran Companion AI" },
-      { name: "theme-color", content: "#3e9b77" },
+      { name: "theme-color", content: "#0b1b15" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
-      { name: "apple-mobile-web-app-title", content: "قرآن و سنت رہنمائی" },
+      { name: "apple-mobile-web-app-title", content: "قرآن و سنت سے رہنمائی" },
       { property: "og:title", content: "Quran Companion AI" },
       {
         property: "og:description",
@@ -118,9 +118,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <HeadContent />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("theme");var p=window.matchMedia("(prefers-color-scheme: dark)").matches;var d=t?t==="dark":p;if(d){document.documentElement.classList.add("dark")}else{document.documentElement.classList.remove("dark")}}catch(e){}})();`,
+          }}
+        />
       </head>
       <body>
         {children}
