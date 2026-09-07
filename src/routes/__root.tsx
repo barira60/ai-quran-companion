@@ -82,7 +82,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
           "Quran Companion AI listens to how you feel and shares relevant verses, hadith, duas, and practical steps from the Qur'an and Sunnah.",
       },
       { name: "author", content: "Quran Companion AI" },
-      { name: "theme-color", content: "#4ea884" },
+      { name: "theme-color", content: "#3e9b77" },
       { name: "apple-mobile-web-app-capable", content: "yes" },
       { name: "apple-mobile-web-app-status-bar-style", content: "black-translucent" },
       { name: "apple-mobile-web-app-title", content: "قرآن و سنت رہنمائی" },
