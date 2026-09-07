@@ -2,54 +2,18 @@ import { QuranLogo } from "@/components/QuranLogo";
 import { useEffect, useState } from "react";
 
 export function SplashScreen() {
-  const [shouldRender, setShouldRender] = useState(() => {
-    if (typeof window === "undefined") return false;
-
-    const isStandalone =
-      window.matchMedia("(display-mode: standalone)").matches ||
-      (window.navigator as unknown as { standalone?: boolean }).standalone === true;
-
-    // Desktop browser visitors skip splash for instant access
-    const isDesktop = window.innerWidth >= 1024 && !isStandalone;
-    if (isDesktop) return false;
-
-    // First visit per session check for web visitors
-    const alreadyShown = sessionStorage.getItem("qc.splash-shown");
-    if (alreadyShown && !isStandalone) return false;
-
-    return true;
-  });
-
+  const [shouldRender, setShouldRender] = useState(true);
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
-    if (typeof window === "undefined") return;
-
-    const isStandalone =
-      window.matchMedia("(display-mode: standalone)").matches ||
-      (window.navigator as unknown as { standalone?: boolean }).standalone === true;
-
-    const isDesktop = window.innerWidth >= 1024 && !isStandalone;
-    if (isDesktop) {
-      setShouldRender(false);
-      return;
-    }
-
-    const alreadyShown = sessionStorage.getItem("qc.splash-shown");
-    if (alreadyShown && !isStandalone) {
-      setShouldRender(false);
-      return;
-    }
-
-    sessionStorage.setItem("qc.splash-shown", "true");
-
+    // Display splash screen first, then smoothly transition into the app content
     const fadeTimer = setTimeout(() => {
       setFading(true);
       const removeTimer = setTimeout(() => {
         setShouldRender(false);
-      }, 500);
+      }, 600);
       return () => clearTimeout(removeTimer);
-    }, 1200);
+    }, 1400);
 
     return () => clearTimeout(fadeTimer);
   }, []);
