@@ -2,27 +2,30 @@ import logo from "@/assets/logo.png";
 import { useEffect, useState } from "react";
 
 export function SplashScreen() {
-  const [shouldRender, setShouldRender] = useState(false);
+  const [shouldRender, setShouldRender] = useState(() => {
+    if (typeof window === "undefined") return true;
+    return !sessionStorage.getItem("qc.splash-shown");
+  });
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
-    // Only show once per session on cold start
+    if (typeof window === "undefined") return;
+
     const alreadyShown = sessionStorage.getItem("qc.splash-shown");
     if (alreadyShown) {
+      setShouldRender(false);
       return;
     }
 
-    // Mark as shown immediately and start splash lifecycle
     sessionStorage.setItem("qc.splash-shown", "true");
-    setShouldRender(true);
 
     const fadeTimer = setTimeout(() => {
       setFading(true);
       const removeTimer = setTimeout(() => {
         setShouldRender(false);
-      }, 600);
+      }, 500);
       return () => clearTimeout(removeTimer);
-    }, 1300);
+    }, 1200);
 
     return () => clearTimeout(fadeTimer);
   }, []);
