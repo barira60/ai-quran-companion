@@ -51,7 +51,7 @@ export function SplashScreen() {
             alt="قرآن و سنت رہنمائی"
             width={120}
             height={120}
-            className="size-28 sm:size-32 object-contain drop-shadow-2xl"
+            className="size-28 sm:size-32 object-contain drop-shadow-2xl brightness-0 invert"
           />
         </div>
 

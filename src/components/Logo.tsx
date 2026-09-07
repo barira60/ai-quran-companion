@@ -16,7 +16,7 @@ export function Logo({
         alt="قرآن و سنت رہنمائی"
         width={size}
         height={size}
-        className="shrink-0 object-contain drop-shadow-xs"
+        className="shrink-0 object-contain drop-shadow-xs dark:brightness-0 dark:invert"
         style={{ width: size, height: size }}
       />
       {withWordmark && (
