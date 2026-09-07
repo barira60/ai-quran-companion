@@ -2,11 +2,31 @@ import { QuranLogo } from "@/components/QuranLogo";
 import { useEffect, useState } from "react";
 
 export function SplashScreen() {
-  const [shouldRender, setShouldRender] = useState(true);
+  const [shouldRender, setShouldRender] = useState(false);
   const [fading, setFading] = useState(false);
 
   useEffect(() => {
-    // Display splash screen first, then smoothly transition into the app content
+    if (typeof window === "undefined") return;
+
+    const isStandalone =
+      window.matchMedia("(display-mode: standalone)").matches ||
+      (window.navigator as unknown as { standalone?: boolean }).standalone === true;
+
+    // Skip on installed PWA (native Android splash already handled) or desktop browsers
+    if (isStandalone || window.innerWidth >= 1024) {
+      return;
+    }
+
+    // Skip if already shown in this web session
+    const alreadyShown = sessionStorage.getItem("qc.splash-shown");
+    if (alreadyShown) {
+      return;
+    }
+
+    // Show splash for mobile web visitor
+    setShouldRender(true);
+    sessionStorage.setItem("qc.splash-shown", "true");
+
     const fadeTimer = setTimeout(() => {
       setFading(true);
       const removeTimer = setTimeout(() => {
@@ -41,7 +61,7 @@ export function SplashScreen() {
         </div>
 
         <div className="space-y-1.5 pt-1.5 flex flex-col items-center" dir="rtl">
-          <h1 className="font-urdu text-3xl sm:text-4xl font-bold text-white tracking-normal leading-[1.8] drop-shadow-md">
+          <h1 className="font-urdu text-3xl sm:text-4xl font-normal text-white/95 tracking-normal leading-[1.8] drop-shadow-sm">
             قرآن و سنت سے رہنمائی
           </h1>
           <p className="text-[11px] sm:text-xs font-semibold tracking-widest text-white/90 uppercase font-sans" dir="ltr">
