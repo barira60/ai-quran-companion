@@ -68,6 +68,7 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
 }
 
 import { InstallPwaPrompt } from "@/components/InstallPwaPrompt";
+import { PwaUpdateManager } from "@/components/PwaUpdateManager";
 import { SplashScreen } from "@/components/SplashScreen";
 
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
@@ -141,15 +142,6 @@ function RootComponent() {
       const prefers = window.matchMedia("(prefers-color-scheme: dark)").matches;
       const dark = stored ? stored === "dark" : prefers;
       document.documentElement.classList.toggle("dark", dark);
-
-      // Register PWA Service Worker
-      if ("serviceWorker" in navigator) {
-        window.addEventListener("load", () => {
-          navigator.serviceWorker.register("/sw.js").catch((err) => {
-            console.warn("PWA ServiceWorker registration failed: ", err);
-          });
-        });
-      }
     }
   }, []);
 
@@ -157,6 +149,7 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <SplashScreen />
       <Outlet />
+      <PwaUpdateManager />
       <InstallPwaPrompt />
       <Toaster richColors position="top-center" />
     </QueryClientProvider>

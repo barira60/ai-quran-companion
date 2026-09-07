@@ -45,6 +45,13 @@ self.addEventListener("activate", (event) => {
   self.clients.claim();
 });
 
+// Message Event: Handle SKIP_WAITING to activate new version immediately
+self.addEventListener("message", (event) => {
+  if (event.data && (event.data.type === "SKIP_WAITING" || event.data === "SKIP_WAITING")) {
+    self.skipWaiting();
+  }
+});
+
 // Fetch Event: Intelligent multi-tier caching
 self.addEventListener("fetch", (event) => {
   // Only handle GET requests
