@@ -1,4 +1,4 @@
-import logo from "@/assets/logo.png";
+import { QuranLogo } from "@/components/QuranLogo";
 import { useEffect, useState } from "react";
 
 export function SplashScreen() {
@@ -48,14 +48,8 @@ export function SplashScreen() {
 
       {/* Center Logo & Title */}
       <div className="flex flex-col items-center text-center my-auto space-y-4 sm:space-y-5 animate-in fade-in zoom-in-95 duration-400">
-        <div className="relative">
-          <img
-            src={logo}
-            alt="قرآن و سنت رہنمائی"
-            width={120}
-            height={120}
-            className="size-28 sm:size-32 object-contain drop-shadow-2xl brightness-0 invert"
-          />
+        <div className="relative text-white drop-shadow-2xl">
+          <QuranLogo size={112} className="size-28 sm:size-32" />
         </div>
 
         <div className="space-y-1 pt-1.5">

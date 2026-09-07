@@ -1,0 +1,76 @@
+export function QuranLogo({
+  size = 28,
+  className = "",
+}: {
+  size?: number;
+  className?: string;
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 100 100"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-hidden="true"
+    >
+      {/* Top Open Quran Book (Left Page, Right Page, Hardcover Trim) */}
+      <g>
+        {/* Left Book Half (Cover & Pages) */}
+        <path
+          d="M48.5 53.5L16.2 36.8C14.8 36.1 14 34.5 14.2 32.9L15.8 21.6C16.1 19.5 18.2 18.1 20.2 18.7L46.8 26.5C48.2 26.9 49 28.2 49 29.6V52.8C49 53.4 48.7 53.6 48.5 53.5Z"
+        />
+        <path
+          d="M46.5 29.8L21.8 22.8C20.8 22.5 19.8 23.1 19.6 24.1L18.4 32.5C18.3 33.3 18.7 34.1 19.4 34.5L46.5 48.5V29.8Z"
+          fill="currentColor"
+          fillOpacity="0.25"
+        />
+
+        {/* Right Book Half (Cover & Pages) */}
+        <path
+          d="M51.5 53.5L83.8 36.8C85.2 36.1 86 34.5 85.8 32.9L84.2 21.6C83.9 19.5 81.8 18.1 79.8 18.7L53.2 26.5C51.8 26.9 51 28.2 51 29.6V52.8C51 53.4 51.3 53.6 51.5 53.5Z"
+        />
+        <path
+          d="M53.5 29.8L78.2 22.8C79.2 22.5 80.2 23.1 80.4 24.1L81.6 32.5C81.7 33.3 81.3 34.1 80.6 34.5L53.5 48.5V29.8Z"
+          fill="currentColor"
+          fillOpacity="0.25"
+        />
+
+        {/* Center Spine Ridge */}
+        <path
+          d="M48.8 26.8C49.5 26.4 50.5 26.4 51.2 26.8L51.8 54.2C50.7 54.8 49.3 54.8 48.2 54.2L48.8 26.8Z"
+          fill="currentColor"
+        />
+      </g>
+
+      {/* Bottom Rihal (Wooden Stand with Ornate Crossed Legs) */}
+      <g>
+        {/* Left Stand Leg */}
+        <path
+          d="M24 53.5L47.5 67.2C49 68.1 51 68.1 52.5 67.2L76 53.5C77.5 52.6 79.5 53.2 80.2 54.8L82.8 60.5C83.4 61.8 82.9 63.4 81.6 64.1L53.8 80.5C51.5 81.8 48.5 81.8 46.2 80.5L18.4 64.1C17.1 63.4 16.6 61.8 17.2 60.5L19.8 54.8C20.5 53.2 22.5 52.6 24 53.5Z"
+          fill="currentColor"
+        />
+
+        {/* Left Leg Base Foot Detail */}
+        <path
+          d="M19.5 64.5L25.8 77.8C26.5 79.2 28 80.1 29.6 80L38.2 79.5C39.6 79.4 40.4 77.8 39.5 76.7L29.5 64.8L19.5 64.5Z"
+          fill="currentColor"
+        />
+
+        {/* Right Leg Base Foot Detail */}
+        <path
+          d="M80.5 64.5L74.2 77.8C73.5 79.2 72 80.1 70.4 80L61.8 79.5C60.4 79.4 59.6 77.8 60.5 76.7L70.5 64.8L80.5 64.5Z"
+          fill="currentColor"
+        />
+
+        {/* Carved Arch Cutout Inside Stand */}
+        <path
+          d="M41 73C44 69.5 56 69.5 59 73L50 78L41 73Z"
+          fill="currentColor"
+          fillOpacity="0.3"
+        />
+      </g>
+    </svg>
+  );
+}
